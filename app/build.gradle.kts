@@ -8,7 +8,9 @@
 
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
-    application
+    id("application")
+    id("org.springframework.boot") version "3.2.3"
+    id("io.spring.dependency-management") version "1.1.4"
 }
 
 repositories {
@@ -17,16 +19,20 @@ repositories {
 }
 
 dependencies {
-    // Use JUnit Jupiter for testing.
-    testImplementation("org.junit.jupiter:junit-jupiter:5.9.1")
-
     // This dependency is used by the application.
     implementation("com.google.guava:guava:31.1-jre")
+
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	implementation("org.springframework.boot:spring-boot-starter-mustache")
+	implementation("org.springframework.boot:spring-boot-starter-security")
+	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("org.springframework.security:spring-security-test")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.9.1")
 }
 
 application {
     // Define the main class for the application.
-    mainClass.set("bank.App")
+    mainClass.set("app.BankApplication")
 }
 
 tasks.named<Test>("test") {
