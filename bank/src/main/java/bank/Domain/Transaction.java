@@ -3,12 +3,12 @@ package bank.Domain;
 import java.time.LocalDateTime;
 
 public record Transaction(
-        int id,
-        int amount,
+        long id,
+        long amount,
         CurrencyType currency,
         LocalDateTime time,
         TransactionType transactionType,
-        int bankAccountId,
-        int RecipientBankAccountId
+        long bankAccountId,
+        long RecipientBankAccountId
 ) {
 }

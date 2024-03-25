@@ -8,8 +8,8 @@ import bank.Domain.BankAccount;
 
 public interface AccountDao {
     void createAccount(NewAccountDto account);
-    List<BankAccount> getAllAccountsByCustimerId(int id);
+    List<BankAccount> getAllAccountsByCustimerId(long id);
     void updateAccount(BankAccount account);
-    Optional<BankAccount> getAccoinyById(int id);
+    Optional<BankAccount> getAccoinyById(long id);
     // no deletion
 }
