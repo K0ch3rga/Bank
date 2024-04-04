@@ -1,6 +1,7 @@
 package bank.Application.usecases;
 
 import java.util.Optional;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,8 +29,8 @@ public class AccountUsecase {
      * Создаёт новый акаунт
      * @param account
      */
-    public void createNewAccount(NewAccountDto account) {
-        accountDao.createAccount(account);
+    public BankAccount createNewAccount(NewAccountDto account) {
+        return accountDao.createAccount(account);
     }
 
     /**
@@ -51,5 +52,9 @@ public class AccountUsecase {
     public void updateAccount(BankAccount account) {
         //TODO add checks on balance
         accountDao.updateAccount(account);
+    }
+
+    public List<BankAccount> getAll() {
+        return accountDao.getAll();
     }
 }

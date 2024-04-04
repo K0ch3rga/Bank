@@ -7,9 +7,10 @@ import bank.Application.dto.NewAccountDto;
 import bank.Domain.BankAccount;
 
 public interface AccountDao {
-    void createAccount(NewAccountDto account);
-    List<BankAccount> getAllAccountsByCustimerId(long id);
+    BankAccount createAccount(NewAccountDto account);
+    List<BankAccount> getAllAccountsByCustomerId(long id);
     void updateAccount(BankAccount account);
     Optional<BankAccount> getAccoinyById(long id);
     // no deletion
+    List<BankAccount> getAll();
 }
