@@ -13,17 +13,17 @@ import bank.Adapters.out.PostgresJDBC.repositories.AccountRepository;
 import bank.Application.dao.AccountDao;
 import bank.Application.dto.NewAccountDto;
 import bank.Domain.BankAccount;
-import bank.Domain.CurrencyType;
 
 @Service
-public class AccountDaoAdapter implements AccountDao{
+public class AccountDaoAdapter implements AccountDao {
     @Autowired
     private AccountRepository accountRepository;
 
     @Override
     public BankAccount createAccount(NewAccountDto account) {
-        var acc = accountRepository.save(new AccountEntity(Math.abs(new Random().nextLong()), 0, account.accountHolder(), account.bankId(), account.currency()));
-        return new BankAccount(acc.id(),acc.balance(), acc.accountHolder(), acc.bankId(), acc.currency());
+        var acc = accountRepository.save(new AccountEntity(Math.abs(new Random().nextLong()), 0,
+                account.accountHolder(), account.bankId(), account.currency()));
+        return new BankAccount(acc.id, acc.balance, acc.accountHolder, acc.bankId, acc.currency);
     }
 
     @Override
@@ -34,27 +34,28 @@ public class AccountDaoAdapter implements AccountDao{
 
     @Override
     public void updateAccount(BankAccount account) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateAccount'");
+        AccountEntity newAccountEntity = new AccountEntity(account.id(), account.balance(), account.accountHolder(),
+                account.bankId(), account.currency());
+        accountRepository.save(newAccountEntity);
     }
 
     @Override
     public Optional<BankAccount> getAccoinyById(long id) {
         var acc = accountRepository.findById(id);
         if (acc.isPresent()) {
-            return Optional.of(new BankAccount(acc.get().id(),acc.get().balance(), acc.get().accountHolder(), acc.get().bankId(), acc.get().currency()));
+            return Optional.of(new BankAccount(acc.get().id, acc.get().balance, acc.get().accountHolder,
+                    acc.get().bankId, acc.get().currency));
         } else {
             return Optional.empty();
-        }       
+        }
     }
 
     @Override
     public List<BankAccount> getAll() {
         var list = new ArrayList<BankAccount>();
-        accountRepository.findAll().forEach(a -> 
-            list.add(new BankAccount(a.id(),a.balance(), a.accountHolder(), a.bankId(), a.currency())));
+        accountRepository.findAll()
+                .forEach(a -> list.add(new BankAccount(a.id, a.balance, a.accountHolder, a.bankId, a.currency)));
         return list;
     }
 
-    
 }

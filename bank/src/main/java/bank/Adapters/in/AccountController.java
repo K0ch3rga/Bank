@@ -37,5 +37,4 @@ public class AccountController {
     public BankAccount get(@PathVariable long id) {
         return accountUsecase.getAccountById(id).get();
     }
-
 }
