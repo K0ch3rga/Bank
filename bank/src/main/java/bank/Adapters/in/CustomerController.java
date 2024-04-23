@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import bank.Application.dto.NewCustomerDto;
 import bank.Application.usecases.CustomerUsecase;
-import bank.Domain.Customer;
 
 @Controller
 @ResponseBody
