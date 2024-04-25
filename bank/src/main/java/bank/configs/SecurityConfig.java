@@ -15,8 +15,8 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(authz ->  authz
-        .requestMatchers("/", "/registration").permitAll()
-        .requestMatchers("/list").hasRole("CUSTOMER")
+        .requestMatchers("/", "/registration", "/list", "/status").permitAll()
+        //.requestMatchers("").hasRole("CUSTOMER")
         .requestMatchers("/create").hasRole("ADMIN"))
         .formLogin(Customizer.withDefaults());
         return http.build();

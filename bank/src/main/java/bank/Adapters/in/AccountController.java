@@ -18,11 +18,6 @@ public class AccountController {
     @Autowired
     private AccountUsecase accountUsecase;
 
-    @GetMapping("")
-    public String ok() {
-        return "OK";
-    }
-
     @GetMapping("/create")
     public String create() {
         return accountUsecase.createNewAccount(new NewAccountDto(0, 0, null)).toString();
