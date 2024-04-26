@@ -36,7 +36,7 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass.set("main.java.bank.BankApplication")
+    mainClass.set("bank.BankApplication")
 }
 
 tasks.named<Test>("test") {
