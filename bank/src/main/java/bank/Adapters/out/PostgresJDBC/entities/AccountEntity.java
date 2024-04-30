@@ -4,7 +4,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import bank.Domain.CurrencyType;
@@ -13,7 +12,7 @@ import bank.Domain.CurrencyType;
 @Table(name = "accounts")
 public class AccountEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     public long id;
     public long balance;
     public long accountHolder;

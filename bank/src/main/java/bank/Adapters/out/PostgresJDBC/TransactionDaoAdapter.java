@@ -17,12 +17,12 @@ public class TransactionDaoAdapter implements TransactionDao {
     TransactionRepository transactionRepository;
 
     @Override
-    public void createTransaction(NewTransactionDto transaction) {
+    public synchronized void createTransaction(NewTransactionDto transaction) {
         transactionRepository.save(new TransactionEntity());
     }
 
     @Override
-    public List<Transaction> getAllbyClientId(long id) {
+    public synchronized List<Transaction> getAllbyClientId(long id) {
         return transactionRepository.findByBankAccountIdOrRecipientBankAccountId(id, id).stream()
                 .map((t) -> new Transaction(t.id, t.amount, t.currency, t.time, t.transactionType, t.bankAccountId,
                         t.recipientBankAccountId))

@@ -2,7 +2,6 @@ package bank.Adapters.out.PostgresJDBC.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -10,7 +9,7 @@ import jakarta.persistence.Table;
 @Table(name = "banks")
 public class BankEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     public long id;
     public String name;
 
