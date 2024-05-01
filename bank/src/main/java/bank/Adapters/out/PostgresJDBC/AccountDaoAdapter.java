@@ -3,8 +3,6 @@ package bank.Adapters.out.PostgresJDBC;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Optional;
-import java.util.Random;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +19,7 @@ public class AccountDaoAdapter implements AccountDao {
 
     @Override
     public synchronized BankAccount createAccount(NewAccountDto account) {
-        var acc = accountRepository.save(new AccountEntity(Math.abs(new Random().nextLong()), 0,
+        var acc = accountRepository.save(new AccountEntity(null, Long.valueOf(0),
                 account.accountHolder(), account.bankId(), account.currency()));
         return new BankAccount(acc.id, acc.balance, acc.accountHolder, acc.bankId, acc.currency);
     }

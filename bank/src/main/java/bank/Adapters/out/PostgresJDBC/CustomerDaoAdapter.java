@@ -22,8 +22,8 @@ public class CustomerDaoAdapter implements CustomerDao {
     CustomerRepository customerRepository;
 
     @Override
-    public synchronized UserDetails loadCustomerByName(String name) {
-        Customer customer = customerRepository.findByfirstName(name).toRecord();
+    public synchronized UserDetails loadCustomerByName(String email) {
+        Customer customer = customerRepository.findByEmail(email).toRecord();
         return new org.springframework.security.core.userdetails.User(customer.firstName(),
                 customer.password(), mapRolesToAthorities(customer.roles()));
     }
@@ -34,12 +34,14 @@ public class CustomerDaoAdapter implements CustomerDao {
 
     @Override
     public synchronized void saveCustomer(NewCustomerDto newCustomer) throws Exception {
-        CustomerEntity customerFromDb = customerRepository.findByfirstName(newCustomer.firstName());
+        CustomerEntity customerFromDb = customerRepository.findByFirstName(newCustomer.firstName());
         if (customerFromDb != null) {
             throw new Exception("customer exist");
         }
-        CustomerEntity customerEntity = new CustomerEntity();
+        CustomerEntity customerEntity = new CustomerEntity(newCustomer.firstName(), newCustomer.lastName(),
+                newCustomer.phone(), newCustomer.email(), newCustomer.password(), Roles.CUSTOMER);
         // customer.setActive(true);
+        System.out.println(customerEntity);
         customerRepository.save(customerEntity);
     }
 }

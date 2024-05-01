@@ -13,15 +13,14 @@ import bank.Domain.CurrencyType;
 public class AccountEntity {
     @Id
     @GeneratedValue
-    public long id;
-    public long balance;
-    public long accountHolder;
-    public long bankId;
+    public Long id;
+    public Long balance;
+    public Long accountHolder;
+    public Long bankId;
     @Enumerated(EnumType.STRING)
     public CurrencyType currency;
 
-    public AccountEntity(long id, long balance, long accountHolder, long bankId, CurrencyType currency){
-        this.id = id;
+    public AccountEntity(Long id, Long balance, Long accountHolder, Long bankId, CurrencyType currency){
         this.balance = balance;
         this.accountHolder = accountHolder;
         this.bankId = bankId;
@@ -29,6 +28,6 @@ public class AccountEntity {
     }
 
     public AccountEntity(){
-        this(0, 0, 0, 0, CurrencyType.RUB);
+        this(null, null, null, null, CurrencyType.RUB);
     }
 } 
