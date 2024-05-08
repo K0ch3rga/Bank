@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+  <title> Пополнение баланса </title>
+</head>
+
+<body>
+<p>Внесите купюры в купюроприемник:</p>
+<form th:action="@{/newdeposit}" method="post">
+  <div><label> <input type="text" name="balplus" /> </label></div>
+  <div><input type="submit" value="Пополнить" /></div>
+</form>
+</body>
+
+</html>
