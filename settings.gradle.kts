@@ -9,3 +9,4 @@
 
 rootProject.name = "Bank"
 include("bank")
+include("tg-bot")
