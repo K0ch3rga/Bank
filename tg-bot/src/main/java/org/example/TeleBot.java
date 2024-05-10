@@ -7,7 +7,6 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-import org.example.CommandHandler;
 
 
 public class TeleBot extends TelegramLongPollingBot {
@@ -16,6 +15,7 @@ public class TeleBot extends TelegramLongPollingBot {
     public TeleBot() {
         super();
         m_CommandHandler = new CommandHandler();
+
     }
 
     @Override
@@ -44,11 +44,11 @@ public class TeleBot extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return "НАЗВАНИЕ БОТА";
+        return "VaultVoyagerBot";
     }
 
     @Override
     public String getBotToken() {
-        return "ТОКЕН";
+        return "";
     }
 }

@@ -14,9 +14,9 @@ public class CommandHandler {
     }
 
     private final Command[] m_ComandList = {
-            new Command("/up_balance", "Пополнение баланса", "/up_balance {номер_счета} {сумма}"),
-            new Command("/withdraw_balance", "Снять деньги со счета", "/withdraw_balance {номер_счета} {сумма}"),
-            new Command("/transfer_money", "Перевод средств", "/transfer_money {номер_своего_счета} {номер_счета_получателя} {сумма}"),
+            new Command("/up_balance", "Пополнение баланса", "/up_balance <номер_счета> <сумма>"),
+            new Command("/withdraw_balance", "Снять деньги со счета", "/withdraw_balance <номер_счета> <сумма>"),
+            new Command("/transfer_money", "Перевод средств", "/transfer_money <номер_своего_счета> <номер_счета_получателя> <сумма>"),
             new Command("/open_new_account", "Открыть новый счет", "/open_new_account"),
             new Command("/show_balance", "Мой баланс", "/show_balance"),
             new Command("/help", "Вывести список команд", "/help")
