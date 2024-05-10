@@ -39,8 +39,7 @@ public class AccountUsecase {
      * @return
      * @throws AccountDoesntExistExeption
      */
-    public Optional<BankAccount> getAccountById(long id) throws AccountDoesntExistExeption {
-        // TODO choose optional or exeption
+    public Optional<BankAccount> getAccountById(long id) {
         return accountDao.getAccoinyById(id);
     }
 

@@ -23,11 +23,13 @@ import bank.Infrastructure.InsufficientFundsException;
 public class TransferUsecase {
     private final AccountDao accountDao;
     private final TransactionDao transactionDao;
+    private final CursService cursService; 
 
     @Autowired
-    public TransferUsecase(AccountDao accountDao, TransactionDao transactionDao) {
+    public TransferUsecase(AccountDao accountDao, TransactionDao transactionDao, CursService cursService) {
         this.accountDao = accountDao;
         this.transactionDao = transactionDao;
+        this.cursService = cursService;
     }
 
     /**
@@ -58,8 +60,13 @@ public class TransferUsecase {
             throw new InsufficientFundsException("Not enough money at ", fromAcc.id());
 
         long convertedCount = count;
-        if (fromAcc.currency() != toAcc.currency())
-            convertedCount = (long) count * 5 / 100; // FIXME
+        if (fromAcc.currency() != toAcc.currency()) {
+            float fromRate = cursService.getCost(fromAcc.currency());
+            float toRate = cursService.getCost(toAcc.currency());
+            long fromConvertedCount = (long) (count * fromRate);
+            long toConvertedCount = (long) (fromConvertedCount / toRate);
+            convertedCount = toConvertedCount;
+        }
 
         var newFrom = new BankAccount(fromAcc.id(), fromAcc.balance() - count, fromAcc.accountHolder(),
                 fromAcc.bankId(), fromAcc.currency());

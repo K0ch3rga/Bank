@@ -7,5 +7,6 @@ import bank.Adapters.out.PostgresJDBC.entities.CustomerEntity;
 
 @Repository
 public interface CustomerRepository extends CrudRepository<CustomerEntity, Long> {
-    CustomerEntity findByfirstName(String firstName);
+    CustomerEntity findByFirstName(String firstName);
+    CustomerEntity findByEmail(String email);
 }

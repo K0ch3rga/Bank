@@ -4,7 +4,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import bank.Domain.CurrencyType;
@@ -13,16 +12,15 @@ import bank.Domain.CurrencyType;
 @Table(name = "accounts")
 public class AccountEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public long id;
-    public long balance;
-    public long accountHolder;
-    public long bankId;
+    @GeneratedValue
+    public Long id;
+    public Long balance;
+    public Long accountHolder;
+    public Long bankId;
     @Enumerated(EnumType.STRING)
     public CurrencyType currency;
 
-    public AccountEntity(long id, long balance, long accountHolder, long bankId, CurrencyType currency){
-        this.id = id;
+    public AccountEntity(Long id, Long balance, Long accountHolder, Long bankId, CurrencyType currency){
         this.balance = balance;
         this.accountHolder = accountHolder;
         this.bankId = bankId;
@@ -30,6 +28,6 @@ public class AccountEntity {
     }
 
     public AccountEntity(){
-        this(0, 0, 0, 0, CurrencyType.RUB);
+        this(null, null, null, null, CurrencyType.RUB);
     }
 } 
