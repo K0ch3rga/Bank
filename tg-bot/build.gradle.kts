@@ -9,6 +9,10 @@ repositories {
     mavenCentral()
 }
 
+tasks.withType<JavaCompile> {
+    options.encoding = "UTF-8"
+}
+
 dependencies {
     // implementation ("org.springframework.boot:spring-boot-starter")
     implementation("org.telegram:telegrambots:6.9.7.1")
@@ -18,4 +22,5 @@ dependencies {
 
 application {
     mainClass.set("org.example.Main")
+
 }
