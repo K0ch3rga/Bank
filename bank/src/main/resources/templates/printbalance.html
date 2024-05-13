@@ -4,15 +4,16 @@
 
 <head>
   <title> Ошибка! </title>
+  <link th:href="@{/styles/main.css}" rel="stylesheet" />
 </head>
 
 <body>
 <p>Чековая лента кончилась, приносим свои извинения!</p>
 <form th:action="@{/showbalance}" method="get">
-  <button>Вывести баланс на экран</button>
+  <button class="button purple">Вывести баланс на экран</button>
 </form>
 <form th:action="@{/main}" method="get">
-  <button>Вернуться в главное меню</button>
+  <button class="button purple">Вернуться в главное меню</button>
 </form>
 </body>
 

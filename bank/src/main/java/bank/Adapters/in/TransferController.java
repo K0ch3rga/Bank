@@ -99,6 +99,11 @@ public class TransferController {
         return "depositOk";
     }
 
+    @GetMapping("/styledpage")
+    public String styledpage(Model model) {
+        return "styledpage";
+    }
+
     @GetMapping("/depositOk")
     public String depositOk(Model model) {
         return "depositOk";

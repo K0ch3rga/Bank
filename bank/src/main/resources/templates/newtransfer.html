@@ -4,14 +4,15 @@
 
 <head>
   <title> Новый перевод</title>
+  <link th:href="@{/styles/main.css}" rel="stylesheet" />
 </head>
 
 <body>
 <p>Введите реквизиты:</p>
 <form th:action="@{/newtransfer}" method="post">
-  <div><label> Номер карты или номер телефона : <input type="text" name="username" /> </label></div>
+  <div><label> Реквизиты : <input type="text" name="username" /> </label></div>
   <div><label> Сумма: <input type="text" name="password" /> </label></div>
-  <div><input type="submit" value="Отправить" /></div>
+  <div><input class="button purple" type="submit" value="Отправить" /></div>
 </form>
 </body>
 

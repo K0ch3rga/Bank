@@ -4,12 +4,13 @@
 
 <head>
   <title> Перевод выполнен </title>
+  <link th:href="@{/styles/main.css}" rel="stylesheet" />
 </head>
 
 <body>
 <p>Перевод выполнен!</p>
 <form th:action="@{/main}" method="get">
-  <button>Вернуться в главное меню</button>
+  <button class="button purple">Вернуться в главное меню</button>
 </form>
 </body>
 

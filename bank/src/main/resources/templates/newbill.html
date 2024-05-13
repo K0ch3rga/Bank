@@ -4,6 +4,7 @@
 
 <head>
   <title> Открыть новый счет </title>
+  <link th:href="@{/styles/main.css}" rel="stylesheet" />
 </head>
 
 <body>
@@ -21,7 +22,7 @@
   </select>
 </form>
 <form th:action="@{/newbill}" method="post">
-  <button>Открыть новый счет!</button>
+  <button class="button purple">Открыть новый счет!</button>
 </form>
 </body>
 

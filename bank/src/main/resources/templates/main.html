@@ -4,15 +4,18 @@
 
 <head>
   <title> Главная страница </title>
+  <link th:href="@{/styles/main.css}" rel="stylesheet" />
 </head>
 
 <body>
   <p>Здравствуйте,<span th:value="${user.firstName}"/> ! Вы успешно вошли в свой банковский аккаунт. Выберите нужное действие:</p>
-  <a th:href="@{newbill}"><div>Открыть новый счет</div></a>
-  <a th:href="@{newtransfer}"><div>Перевести деньги</div></a>
-  <a th:href="@{withdraft}"><div>Снять деньги</div></a>
-  <a th:href="@{newdeposit}"><div>Пополнить баланс</div></a>
-  <a th:href="@{checkbalance}"><div>Показать баланс</div></a>
+  <div class="buttons">
+  <a class="button purple" th:href="@{newbill}"><div>Открыть новый счет</div></a>
+  <a class="button purple" th:href="@{newtransfer}"><div>Перевести деньги</div></a>
+  <a class="button purple" th:href="@{withdraft}"><div>Снять деньги</div></a>
+  <a class="button purple" th:href="@{newdeposit}"><div>Пополнить баланс</div></a>
+  <a class="button purple" th:href="@{checkbalance}"><div>Показать баланс</div></a>
+  </div>
 </body>
 
 </html>

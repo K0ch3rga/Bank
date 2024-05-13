@@ -1,8 +1,14 @@
 package bank.Adapters.in;
 
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 @Controller
 public class BaseController {
@@ -12,7 +18,5 @@ public class BaseController {
     public String ok() {
         return "OK";
     }
-
-
     
 }

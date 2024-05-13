@@ -17,7 +17,7 @@ public class SecurityConfig {
         http.authorizeHttpRequests(authz ->  authz
         .requestMatchers("/", "/registration", "/list", "/status", "/main", "/newbill", "/billadded", "/newtransfer", "/transferOk",
                 "/transferErrorNums", "/transferErrorBalance", "/withdraft", "/withdraftError", "/withdraftOk", "/newdeposit", "/depositOk",
-                "/checkbalance", "/showbalance", "/printbalance").permitAll()
+                "/checkbalance", "/showbalance", "/printbalance", "/styles/main.css").permitAll()
         //.requestMatchers("").hasRole("CUSTOMER")
         .requestMatchers("/create").hasRole("ADMIN"))
         .formLogin(Customizer.withDefaults());

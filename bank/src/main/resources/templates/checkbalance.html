@@ -4,11 +4,12 @@
 
 <head>
   <title> Проверка баланса </title>
+  <link th:href="@{/styles/main.css}" rel="stylesheet" />
 </head>
 
 <body>
-<form th:action="@{/showbalance}" method="get"><button>Показать баланс на экране</button></form>
-<form th:action="@{/printbalance}" method="get"><button>Распечатать на чеке</button></form>
+<form th:action="@{/showbalance}" method="get"><button class="button purple">Показать баланс на экране</button></form>
+<form th:action="@{/printbalance}" method="get"><button class="button purple">Распечатать на чеке</button></form>
 </body>
 
 </html>

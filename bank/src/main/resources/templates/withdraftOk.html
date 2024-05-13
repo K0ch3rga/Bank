@@ -1,15 +1,16 @@
-transferOk.html<!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
   xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
 <head>
   <title> Снятие денег </title>
+  <link th:href="@{/styles/main.css}" rel="stylesheet" />
 </head>
 
 <body>
 <p> Заберите деньги!</p>
 <form th:action="@{/main}" method="get">
-  <button>Вернуться в главное меню</button>
+  <button class="button purple">Вернуться в главное меню</button>
 </form>
 </body>
 

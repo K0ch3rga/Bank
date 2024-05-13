@@ -4,13 +4,14 @@
 
 <head>
   <title> Пополнение баланса </title>
+  <link th:href="@{/styles/main.css}" rel="stylesheet" />
 </head>
 
 <body>
 <p>Внесите купюры в купюроприемник:</p>
 <form th:action="@{/newdeposit}" method="post">
   <div><label> <input type="text" name="balplus" /> </label></div>
-  <div><input type="submit" value="Пополнить" /></div>
+  <div ><input class="button purple" type="submit" value="Пополнить" /></div>
 </form>
 </body>
 

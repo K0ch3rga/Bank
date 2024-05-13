@@ -4,17 +4,18 @@
 
 <head>
   <title> Перевод не выполнен</title>
+  <link th:href="@{/styles/main.css}" rel="stylesheet" />
 </head>
 
 <body>
 <p>Проверьте реквизиты!</p>
 
 <form th:action="@{/newtransfer}" method="get">
-  <button>Попробовать снова</button>
+  <button class="button purple">Попробовать снова</button>
 </form>
 
 <form th:action="@{/main}" method="get">
-  <button>Вернуться в главное меню</button>
+  <button class="button purple">Вернуться в главное меню</button>
 </form>
 </body>
 

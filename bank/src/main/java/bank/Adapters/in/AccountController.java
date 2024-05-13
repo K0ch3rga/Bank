@@ -34,6 +34,11 @@ public class AccountController {
         return "newbill";
     }
 
+    @GetMapping("/style")
+    public String style() {
+        return "main";
+    }
+
     @PostMapping("/newbill")
     public String newbillPost(Model model) {
         BankAccount account = accountUsecase.createNewAccount(new NewAccountDto(0, 0, null));
