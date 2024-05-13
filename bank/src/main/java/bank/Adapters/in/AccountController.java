@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import bank.Application.dto.NewAccountDto;
@@ -14,7 +15,6 @@ import bank.Application.usecases.AccountUsecase;
 import bank.Domain.BankAccount;
 
 @Controller
-@ResponseBody
 public class AccountController {
     @Autowired
     private AccountUsecase accountUsecase;
@@ -34,10 +34,12 @@ public class AccountController {
         return "newbill";
     }
 
-    // А тут не хватает метода для регистации нового счёта
-    // BankAccount account = accountUsecase.createNewAccount(new NewAccountDto(0, 0,
-    // null));
-    // model.addAttribute("account", account);
+    @PostMapping("/newbill")
+    public String newbillPost(Model model) {
+        BankAccount account = accountUsecase.createNewAccount(new NewAccountDto(0, 0, null));
+        model.addAttribute("account", account);
+        return "redirect:/billadded";
+    }
 
     // FIXME Лучше перенести это в модальное окно/попап/<dialog> метода выше
     @GetMapping("/billadded")
