@@ -53,6 +53,11 @@ public class AccountUsecase {
         accountDao.updateAccount(account);
     }
 
+    public List<BankAccount> getAllByCustomerId(long id) {
+        return accountDao.getAllAccountsByCustomerId(0);
+    }
+    
+    @Deprecated
     public List<BankAccount> getAll() {
         return accountDao.getAll();
     }

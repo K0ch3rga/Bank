@@ -7,3 +7,4 @@ build
 # ide
 .vs
 .vscode
+.idea

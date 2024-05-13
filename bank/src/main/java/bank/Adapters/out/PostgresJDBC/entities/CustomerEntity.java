@@ -29,14 +29,13 @@ public class CustomerEntity {
     @Enumerated(EnumType.STRING)
     private Set<Roles> roles = new HashSet<>();
 
-    String firstName;
-    String lastName;
-    String phone;
-    String email;
-    String password;
+    private String firstName;
+    private String lastName;
+    private String phone;
+    private String email;
+    private String password;
 
     public CustomerEntity() {
-        this("Oleg", null, null, null, null, new HashSet<>());
     }
 
     public CustomerEntity(String firstName, String lastName, String phone, String email, String password,
@@ -48,6 +47,9 @@ public class CustomerEntity {
             Set<Roles> roles) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.phone = phone;
+        this.email = email;
+        this.password = password;
         this.roles = roles;
     }
 

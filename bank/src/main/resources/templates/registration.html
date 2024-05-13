@@ -11,11 +11,11 @@
     <div th:text="${message}"></div>
   </div>
   <form th:action="@{/registration}" th:object="${newCustomer}" method="post">
-    <div><label> FirstName : <input type="text" name="firstName" /> </label></div>
-    <div><label> LastName : <input type="text" name="lastName" /> </label></div>
-    <div><label> Phone : <input type="text" name="phone" /> </label></div>
-    <div><label> Email : <input type="text" name="email" /> </label></div>
-    <div><label> Password: <input type="password" name="password" /> </label></div>
+    <div><label> FirstName : <input type="text" name="firstName" required /> </label></div>
+    <div><label> LastName : <input type="text" name="lastName" required /> </label></div>
+    <div><label> Phone : <input type="tel" name="phone" required /> </label></div>
+    <div><label> Email : <input type="email" name="email" required /> </label></div>
+    <div><label> Password: <input type="password" name="password" required /> </label></div>
     <div><input type="submit" value="Зарегистрироваться" /></div>
   </form>
 </body>

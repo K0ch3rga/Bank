@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+  <title> Снятие денег </title>
+</head>
+
+<body>
+<p>Введите сумму для снятия:</p>
+<form th:action="@{/withdraft}" method="post">
+  <div><label> <input type="text" name="bal" /> </label></div>
+  <div><input type="submit" value="Cнять" /></div>
+</form>
+</body>
+
+</html>

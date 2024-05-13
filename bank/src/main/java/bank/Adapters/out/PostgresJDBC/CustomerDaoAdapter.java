@@ -15,6 +15,7 @@ import bank.Application.dao.CustomerDao;
 import bank.Application.dto.NewCustomerDto;
 import bank.Domain.Customer;
 import bank.Domain.Roles;
+import bank.Infrastructure.AccountExistsException;
 
 @Service
 public class CustomerDaoAdapter implements CustomerDao {
@@ -33,15 +34,16 @@ public class CustomerDaoAdapter implements CustomerDao {
     }
 
     @Override
-    public synchronized void saveCustomer(NewCustomerDto newCustomer) throws Exception {
-        CustomerEntity customerFromDb = customerRepository.findByFirstName(newCustomer.firstName());
+    public synchronized void saveCustomer(NewCustomerDto newCustomer) throws AccountExistsException {
+        CustomerEntity customerFromDb = customerRepository.findByEmail(newCustomer.email());
         if (customerFromDb != null) {
-            throw new Exception("customer exist");
+            throw new AccountExistsException(customerFromDb.toRecord());
         }
         CustomerEntity customerEntity = new CustomerEntity(newCustomer.firstName(), newCustomer.lastName(),
                 newCustomer.phone(), newCustomer.email(), newCustomer.password(), Roles.CUSTOMER);
         // customer.setActive(true);
-        System.out.println(customerEntity);
+        System.out.println("Saved " + newCustomer.password());
+        System.out.println("Saved " + customerEntity);
         customerRepository.save(customerEntity);
     }
 }
