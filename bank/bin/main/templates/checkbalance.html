@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+  <title> Проверка баланса </title>
+</head>
+
+<body>
+<form th:action="@{/showbalance}" method="get"><button>Показать баланс на экране</button></form>
+<form th:action="@{/printbalance}" method="get"><button>Распечатать на чеке</button></form>
+</body>
+
+</html>
