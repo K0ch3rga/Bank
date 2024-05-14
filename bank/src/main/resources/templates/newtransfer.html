@@ -7,11 +7,11 @@
   <link th:href="@{/styles/main.css}" rel="stylesheet" />
 </head>
 
-<body>
+<body th:style="'background-image: url(/img/bg.png)'">
 <p>Введите реквизиты:</p>
-<form th:action="@{/newtransfer}" method="post">
-  <div><label> Реквизиты : <input type="text" name="username" /> </label></div>
-  <div><label> Сумма: <input type="text" name="password" /> </label></div>
+<form class="form" th:action="@{/newtransfer}" method="post">
+  <label> Реквизиты : <input type="text" name="username" /> </label>
+  <label> Сумма: <input type="text" name="password" /> </label>
   <div><input class="button purple" type="submit" value="Отправить" /></div>
 </form>
 </body>

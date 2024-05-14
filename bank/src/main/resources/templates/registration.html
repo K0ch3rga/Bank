@@ -7,7 +7,7 @@
   <link th:href="@{/styles/main.css}" rel="stylesheet" />
 </head>
 
-<body>
+<body th:style="'background-image: url(/img/bg.png)'">
   <div th:if="${message}">
     <div th:text="${message}"></div>
   </div>

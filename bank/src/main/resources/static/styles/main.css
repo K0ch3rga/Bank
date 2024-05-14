@@ -1,25 +1,58 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css');
 @import url('https://fonts.googleapis.com/css?family=Roboto');
-p,label {
-  font-size: 24px;
-  font-family: Roboto, Verdana, Tahoma, sans;
+p,label{
+  font-size: 34px;
+  font-family: Arial, Helvetica, sans-serif;
   text-align: center;
+  font-weight: 500;
+}
+select{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+    height: 85px;
+}
+options{
+
 }
 
+.form{
+    display:flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+input{
+    width:  250px;
+    height: 25px;
+    padding: 5px 10px 5px 10px;
+    border:1px solid #999;
+    font-size:16px;
+    font-family: Tahoma;
+}
+
+form{
+    margin-bottom: 3%;
+}
 p{
     margin-top: 5%;
-    margin-bottom: 5%;
+    margin-bottom: 3%;
 }
-body {
-    background-color:#eee;
+body{
+    background-size: 100%, 100%;
+    background-attachment: fixed;
 }
 
-.buttons{
-    margin-right: 85%;
+.buttons {
+    margin-top: 5%;
+    width: 30%;
+    height: 550px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    justify-content: space-between;
 }
 
 .button {
@@ -37,9 +70,6 @@ body {
 }
 .button i {
   margin-right: 4px;
-}
-.button + .button {
-  margin-top: 10px;
 }
 
 .button.purple {
@@ -65,5 +95,8 @@ body {
 div {
   margin: 24px;
   text-align: center;
+  margin-left: 0px;
+  width: 300px;
 }
+
 
