@@ -3,16 +3,15 @@
   xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
 <head>
-  <title> Новый перевод</title>
+  <title>Spring Security Example </title>
   <link th:href="@{/styles/main.css}" rel="stylesheet" />
 </head>
-
 <body th:style="'background-image: url(/img/bg.png)'">
-<p>Введите реквизиты:</p>
+<p>Пожалуйста, авторизуйтесь:</p>
 <form class="form" th:action="@{/newtransfer}" method="post">
-  <label> Реквизиты : <input type="text" name="username" /> </label>
-  <label> Сумма: <input type="text" name="password" /> </label>
-  <div><input class="button purple inp" type="submit" value="Отправить" /></div>
+  <label class="login"> Логин : <input type="text" name="username" /> </label>
+  <label class="login"> Пароль: <input type="password" name="password" /> </label>
+  <div><input class="button purple inp logininp" type="submit" value="Войти" /></div>
 </form>
 </body>
 

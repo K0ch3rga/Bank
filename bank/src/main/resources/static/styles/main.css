@@ -23,7 +23,18 @@ options{
     flex-wrap: nowrap;
     justify-content: space-between;
 }
-
+.reg{
+  margin: auto;
+}
+.registration{
+    margin-left:0px;
+}
+.login{
+    margin-bottom:4%;
+}
+.logininp{
+    margin-top:10%;
+}
 input{
     width:  250px;
     height: 25px;
@@ -33,6 +44,10 @@ input{
     font-family: Tahoma;
 }
 
+.inp{
+    margin-top: 5%;
+    height:91px;
+}
 form{
     margin-bottom: 3%;
 }

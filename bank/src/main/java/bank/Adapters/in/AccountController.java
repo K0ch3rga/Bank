@@ -66,6 +66,11 @@ public class AccountController {
         return "showbalance";
     }
 
+    @GetMapping("/login1")
+    public String login1(Model model) {
+        return "login1";
+    }
+
     @GetMapping("/printbalance")
     public String printbalance(Model model) {
         return "printbalance";
