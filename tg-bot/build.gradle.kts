@@ -16,7 +16,7 @@ tasks.withType<JavaCompile> {
 dependencies {
     // implementation ("org.springframework.boot:spring-boot-starter")
     implementation("org.telegram:telegrambots:6.9.7.1")
-
+    implementation("org.reflections:reflections:0.9.12")
     // testImplementation ("org.springframework.boot:spring-boot-starter-test")
 }
 

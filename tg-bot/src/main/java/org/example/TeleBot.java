@@ -10,12 +10,14 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 
 public class TeleBot extends TelegramLongPollingBot {
-    private CommandHandler m_CommandHandler;
+    private CommandHandler commandHandler;
+    private CommandRegister commandRegister;
 
     public TeleBot() {
         super();
-        m_CommandHandler = new CommandHandler();
-
+        commandHandler = new CommandHandler();
+        commandRegister = new CommandRegister(commandHandler);
+        commandRegister.registerAllCommand();
     }
 
     @Override
@@ -26,11 +28,11 @@ public class TeleBot extends TelegramLongPollingBot {
         String commandName = commandParts[0];
         String[] arguments = Arrays.copyOfRange(commandParts, 1, commandParts.length);
 
-        String commandResult = m_CommandHandler.Handle(commandName, arguments);
-        SendMessage(message.getChatId(), commandResult);
+        String commandResult = commandHandler.handle(commandName, arguments);
+        sendMessage(message.getChatId(), commandResult);
     }
 
-    public void SendMessage(Long chatId, String text) {
+    public void sendMessage(Long chatId, String text) {
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(chatId);
         sendMessage.setText(text);
@@ -49,6 +51,6 @@ public class TeleBot extends TelegramLongPollingBot {
 
     @Override
     public String getBotToken() {
-        return "";
+        return "6624519391:AAFidUN4j_jDp5QT6fIabVdM0HjngAYt49U";
     }
 }

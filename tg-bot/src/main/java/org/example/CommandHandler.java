@@ -1,46 +1,41 @@
 package org.example;
 
-public class CommandHandler {
-    private class Command {
-        public Command(String name, String description, String example) {
-            Name = name;
-            Description = description;
-            Example = example;
-        }
+import org.example.Commands.Command;
+import java.util.ArrayList;
 
-        public String Name;
-        public String Description;
-        public String Example;
+public class CommandHandler implements ICommandHandler {
+    private final ArrayList<Command> commands = new ArrayList<>();
+
+    public void registerCommand(Command command) {
+        commands.add(command);
     }
 
-    private final Command[] m_ComandList = {
-            new Command("/up_balance", "Пополнение баланса", "/up_balance <номер_счета> <сумма>"),
-            new Command("/withdraw_balance", "Снять деньги со счета", "/withdraw_balance <номер_счета> <сумма>"),
-            new Command("/transfer_money", "Перевод средств", "/transfer_money <номер_своего_счета> <номер_счета_получателя> <сумма>"),
-            new Command("/open_new_account", "Открыть новый счет", "/open_new_account"),
-            new Command("/show_balance", "Мой баланс", "/show_balance"),
-            new Command("/help", "Вывести список команд", "/help")
-    };
+    @Override
+    public Command findCommandByName(String commandName) {
+        return commands.stream()
+                .filter(c -> c.Name.equals(commandName))
+                .findAny()
+                .orElse(null);
+    }
+    public CommandHandler() {}
 
+    public String handle(String command, String[] args) {
+        var cmd = findCommandByName(command);
+        if (cmd == null)
+            return String.format("Неизвестная команда %s", command) ;
 
-    public CommandHandler()
-    {
+        return cmd.execute(args);
     }
 
-    public String Handle(String command, String[] arguments) {
-        if (command.equals(m_ComandList[0].Name))
-            return _UpBalance(arguments);
-        else if (command.equals(m_ComandList[1].Name))
-            return _WithdrawBalance(arguments);
-        else if (command.equals(m_ComandList[2].Name))
-            return _TransferMoney(arguments);
-        else if (command.equals(m_ComandList[3].Name))
-            return _OpenNewAccount();
-        else if (command.equals(m_ComandList[4].Name))
-            return _ShowBalance();
-        else if (command.equals(m_ComandList[5].Name))
-            return _Help();
-        return "Не известная команда, попробуйте написать /help";
+    @Override
+    public Command[] getAvailableCommandName(Roles role) {
+        return commands.stream()
+                .filter(c -> c.RequiredRole.equals(role))
+                .toArray(Command[]::new);
+    }
+
+/*    private String registrationCustomer() {
+        return "rega";
     }
 
     private String _UpBalance(String[] arguments) {
@@ -63,18 +58,12 @@ public class CommandHandler {
     }
     private String _ShowBalance() {
         return "_ShowBalance";
-    }
-    private String _Help() {
+    }*/
+/*    private String _Help() {
         String helpText = "Список команд:\n\n";
         for (int i = 0; i < m_ComandList.length; ++i)
             helpText += m_ComandList[i].Description + ":\n" + m_ComandList[i].Example + "\n\n";
         return helpText;
-    }
+    }*/
 
-
-    private String GetSyntaxError(int commandID) {
-        String errorMessage = "Неправильный синтаксис команды " + m_ComandList[commandID].Name;
-        errorMessage += "\nПример:\n" + m_ComandList[commandID].Example;
-        return errorMessage;
-    }
 }

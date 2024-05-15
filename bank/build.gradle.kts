@@ -32,8 +32,8 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.security:spring-security-test")
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.1")
-    implementation("org.telegram:telegrambots:6.8.0")
     implementation("javax.xml.bind:jaxb-api:2.3.1")
+
 }
 
 application {
