@@ -10,14 +10,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import bank.Application.dto.NewAccountDto;
 import bank.Application.usecases.AccountUsecase;
+import bank.Application.usecases.CustomerUsecase;
 import bank.Domain.BankAccount;
 
 @Controller
 public class AccountController {
     private final AccountUsecase accountUsecase;
+    private final CustomerUsecase customerUsecase;
     @Autowired
-    public AccountController(AccountUsecase accountUsecase) {
+    public AccountController(AccountUsecase accountUsecase, CustomerUsecase customerUsecase) {
         this.accountUsecase = accountUsecase;
+        this.customerUsecase = customerUsecase;
     }
 
     @GetMapping("/list")
@@ -26,7 +29,7 @@ public class AccountController {
     }
 
     @GetMapping("/{id}")
-    public BankAccount get(@PathVariable long id) {
+    public BankAccount get(@PathVariable long id) { // REMOVE
         return accountUsecase.getAccountById(id).get();
     }
 
@@ -41,8 +44,13 @@ public class AccountController {
     }
 
     @PostMapping("/newbill")
-    public String newbillPost(Model model) {
-        BankAccount account = accountUsecase.createNewAccount(new NewAccountDto(0, 0, null));
+    public String newbillPost(NewAccountDto newAccount,Model model) {
+        var customer = customerUsecase.getCustomer();
+        
+        System.out.println(customer);
+        System.out.println(newAccount);
+        BankAccount account = accountUsecase.createNewAccount(new NewAccountDto(customer.id(), 0, newAccount.currency()));
+        
         model.addAttribute("account", account);
         return "redirect:/billadded";
     }

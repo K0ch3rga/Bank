@@ -24,14 +24,11 @@ public class CustomerDaoAdapter implements CustomerDao {
     CustomerRepository customerRepository;
 
     @Override
-    public synchronized UserDetails loadCustomerByEmail(String email) {
+    public synchronized Customer loadCustomerByEmail(String email) {
         Customer customer = customerRepository.findByEmail(email).toRecord();
-        return new org.springframework.security.core.userdetails.User(customer.email(),
-                customer.password(), mapRolesToAthorities(customer.roles()));
-    }
-
-    private synchronized List<? extends GrantedAuthority> mapRolesToAthorities(Set<Roles> roles) {
-        return roles.stream().map(r -> new SimpleGrantedAuthority("ROLE_" + r.name())).collect(Collectors.toList());
+        return customer;
+        // return new org.springframework.security.core.userdetails.User(customer.email(),
+        //         customer.password(), mapRolesToAthorities(customer.roles()));
     }
 
     @Override

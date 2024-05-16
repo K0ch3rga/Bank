@@ -42,7 +42,8 @@ public class CustomerController {
 
     @GetMapping("/main")
     public String main(Model model) {
-        model.addAttribute("user", customerUsecase.getCustomer());
+        var c = customerUsecase.getCustomer();
+        model.addAttribute("user", c);
         return "main";
     }
 }
