@@ -1,6 +1,6 @@
 package org.example.Commands;
 
-import org.example.Roles;
+import bank.Domain.Roles;
 
 public class OpenNewAccountCommand extends Command{
     public OpenNewAccountCommand() {
@@ -8,11 +8,11 @@ public class OpenNewAccountCommand extends Command{
                 "/open_new_account",
                 "Открыть новый счет",
                 "/open_new_account",
-                Roles.CUSTOMER);
+                new Roles[]{Roles.CUSTOMER});
     }
 
     @Override
-    public String execute(String[] args) {
+    public String execute(String[] args, Roles role) {
         return null;
     }
 }

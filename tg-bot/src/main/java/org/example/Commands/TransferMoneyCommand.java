@@ -1,6 +1,6 @@
 package org.example.Commands;
 
-import org.example.Roles;
+import bank.Domain.Roles;
 
 public class TransferMoneyCommand extends Command{
     public TransferMoneyCommand() {
@@ -8,11 +8,11 @@ public class TransferMoneyCommand extends Command{
                 "/transfer_money",
                 "Перевод средств",
                 "/transfer_money <номер_своего_счета> <номер_счета_получателя> <сумма>",
-                Roles.CUSTOMER);
+                new Roles[]{Roles.CUSTOMER});
     }
 
     @Override
-    public String execute(String[] args) {
+    public String execute(String[] args, Roles role) {
         return null;
     }
 }

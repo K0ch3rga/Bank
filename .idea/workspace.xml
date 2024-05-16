@@ -5,26 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fbd7be52-4e41-44bb-89ae-56951d83f9e2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/CommandRegister.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Commands/Command.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Commands/HelpCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Commands/LoginCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Commands/OpenNewAccountCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Commands/RegistrationCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Commands/ShowBalanceCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Commands/TransferMoneyCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Commands/UpBalanceCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Commands/WithdrawBalanceCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/ICommandHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Roles.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/bank/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bank/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bank/src/main/java/bank/Adapters/out/PostgresJDBC/AccountDaoAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/bank/src/main/java/bank/Adapters/out/PostgresJDBC/AccountDaoAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bank/src/main/java/bank/Adapters/out/PostgresJDBC/repositories/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/bank/src/main/java/bank/Adapters/out/PostgresJDBC/repositories/CustomerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bank/src/main/java/bank/Domain/Roles.java" beforeDir="false" afterPath="$PROJECT_DIR$/bank/src/main/java/bank/Domain/Roles.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tg-bot/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/tg-bot/build.gradle.kts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/CommandHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/CommandHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/CommandRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/CommandRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Commands/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Commands/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Commands/HelpCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Commands/HelpCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Commands/OpenNewAccountCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Commands/OpenNewAccountCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Commands/ShowBalanceCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Commands/ShowBalanceCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Commands/TransferMoneyCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Commands/TransferMoneyCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Commands/UpBalanceCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Commands/UpBalanceCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Commands/WithdrawBalanceCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Commands/WithdrawBalanceCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/ICommandHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/ICommandHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Roles.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/TeleBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/TeleBot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tg-bot/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/tg-bot/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +51,17 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="Bank" type="f1a62948:ProjectNode" />
               </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Bank" type="f1a62948:ProjectNode" />
+                <item name="tg-bot" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Bank" type="f1a62948:ProjectNode" />
+                <item name="tg-bot" type="2d1252cf:ModuleNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+              </path>
             </expand>
             <select />
           </tree_state>
@@ -75,8 +85,11 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
@@ -89,31 +102,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.TgBot.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Bank [:tg-bot:Main.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Bank:tg-bot [:tg-bot:Main.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Build Bank.executor&quot;: &quot;Run&quot;,
-    &quot;Kotlin script (Beta).build.gradle.kts.executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Spring Boot.BankApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;tg-bot&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Programming/Java/Bank&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.TgBot.executor": "Run",
+    "Gradle.Bank [:tg-bot:Main.main()].executor": "Run",
+    "Gradle.Bank:tg-bot [:tg-bot:Main.main()].executor": "Debug",
+    "Gradle.Build Bank.executor": "Run",
+    "Kotlin script (Beta).build.gradle.kts.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.BankApplication.executor": "Run",
+    "git-widget-placeholder": "tg-bot",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Programming/Java/Bank",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Application.TgBot">
     <configuration name="TgBot" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.example.Main" />
@@ -148,7 +161,12 @@
       <workItem from="1715498662092" duration="8315000" />
       <workItem from="1715670275764" duration="6975000" />
       <workItem from="1715678558552" duration="16001000" />
-      <workItem from="1715763225378" duration="63000" />
+      <workItem from="1715763225378" duration="109000" />
+      <workItem from="1715763793884" duration="16000" />
+      <workItem from="1715837064878" duration="2884000" />
+      <workItem from="1715839983726" duration="1590000" />
+      <workItem from="1715841593715" duration="12121000" />
+      <workItem from="1715855275587" duration="2858000" />
     </task>
     <servers />
   </component>

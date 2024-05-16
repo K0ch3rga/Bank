@@ -20,7 +20,7 @@ public class AccountDaoAdapter implements AccountDao {
     @Override
     public synchronized BankAccount createAccount(NewAccountDto account) {
         var acc = accountRepository.save(new AccountEntity(null, Long.valueOf(0),
-                account.accountHolder(), account.bankId(), account.currency()));
+            account.accountHolder(), account    .bankId(), account.currency()));
         return new BankAccount(acc.id, acc.balance, acc.accountHolder, acc.bankId, acc.currency);
     }
 

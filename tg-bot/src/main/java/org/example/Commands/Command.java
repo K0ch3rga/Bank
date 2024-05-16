@@ -1,21 +1,22 @@
 package org.example.Commands;
 
-import org.example.Roles;
+
+import bank.Domain.Roles;
 
 public abstract class Command {
 
-    public Command(String name, String description, String example, Roles role) {
+    public Command(String name, String description, String example, Roles[] roles) {
         Name = name;
         Description = description;
         Example = example;
-        RequiredRole = role;
+        RequiredRoles = roles;
     }
 
     public String Name;
     public String Description;
     public String Example;
-    public Roles RequiredRole;
+    public Roles[] RequiredRoles;
 
-    public abstract String execute(String[] args);
+    public abstract String execute(String[] args, Roles role);
 
 }

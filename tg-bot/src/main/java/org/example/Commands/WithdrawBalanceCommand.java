@@ -1,6 +1,6 @@
 package org.example.Commands;
 
-import org.example.Roles;
+import bank.Domain.Roles;
 
 public class WithdrawBalanceCommand extends Command{
     public WithdrawBalanceCommand() {
@@ -8,11 +8,11 @@ public class WithdrawBalanceCommand extends Command{
                 "/withdraw_balance",
                 "Снять деньги со счета",
                 "/withdraw_balance <номер_счета> <сумма>",
-                Roles.CUSTOMER);
+                new Roles[]{Roles.CUSTOMER});
     }
 
     @Override
-    public String execute(String[] args) {
+    public String execute(String[] args, Roles role) {
         return null;
     }
 }
