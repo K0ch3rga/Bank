@@ -1,8 +1,10 @@
 package bank.Application.usecases;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import bank.Application.dao.CustomerDao;
@@ -11,7 +13,7 @@ import bank.Domain.Customer;
 import bank.Infrastructure.AccountExistsException;
 
 @Service
-public class CustomerUsecase {
+public class CustomerUsecase implements UserDetailsService{
     @Autowired
     private CustomerDao customerDao;
 
@@ -35,5 +37,10 @@ public class CustomerUsecase {
             return (Customer) User;
         }
         return new Customer(0, "null", "null", "null", "null", "null", null);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return customerDao.loadCustomerByEmail(username);
     }
 }

@@ -8,16 +8,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import bank.Application.dto.NewAccountDto;
 import bank.Application.usecases.AccountUsecase;
 import bank.Domain.BankAccount;
 
 @Controller
 public class AccountController {
+    private final AccountUsecase accountUsecase;
     @Autowired
-    private AccountUsecase accountUsecase;
+    public AccountController(AccountUsecase accountUsecase) {
+        this.accountUsecase = accountUsecase;
+    }
 
     @GetMapping("/list")
     public List<BankAccount> list() {
@@ -64,11 +65,6 @@ public class AccountController {
             model.addAttribute("account", account); // FIXME И как взаимодействовать с optional
         }
         return "showbalance";
-    }
-
-    @GetMapping("/login1")
-    public String login1(Model model) {
-        return "login1";
     }
 
     @GetMapping("/printbalance")

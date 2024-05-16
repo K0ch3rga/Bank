@@ -15,10 +15,14 @@ import bank.Infrastructure.InsufficientFundsException;
 
 @Controller
 public class TransferController {
+    private final TransferUsecase transferUsecase;
+    private final CustomerUsecase customerUsecase;
+
     @Autowired
-    TransferUsecase transferUsecase;
-    @Autowired
-    CustomerUsecase customerUsecase;
+    public TransferController(TransferUsecase transferUsecase, CustomerUsecase customerUsecase) {
+        this.transferUsecase = transferUsecase;
+        this.customerUsecase = customerUsecase;
+    }
 
     @GetMapping("/newtransfer")
     public String newtransfer(Model model) {

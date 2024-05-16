@@ -6,6 +6,6 @@ import bank.Application.dto.NewCustomerDto;
 import bank.Infrastructure.AccountExistsException;
 
 public interface CustomerDao {
-    UserDetails loadCustomerByName(String name);
+    UserDetails loadCustomerByEmail(String email);
     void saveCustomer(NewCustomerDto newCustomer) throws AccountExistsException;
 }

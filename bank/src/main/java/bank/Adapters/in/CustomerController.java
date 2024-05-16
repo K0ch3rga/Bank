@@ -5,13 +5,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
 import bank.Application.dto.NewCustomerDto;
 import bank.Application.usecases.CustomerUsecase;
 
 @Controller
 public class CustomerController {
+    private final CustomerUsecase customerUsecase;
+
     @Autowired
-    private CustomerUsecase customerUsecase;
+    public CustomerController(CustomerUsecase customerUsecase) {
+        this.customerUsecase = customerUsecase;
+
+    }
 
     @GetMapping("/registration")
     public String registration(Model model) {
@@ -29,13 +35,16 @@ public class CustomerController {
         }
     }
 
+    @GetMapping("/login")
+    public String getLoginPage(Model model) {
+        return "login";
+    }
+
     @GetMapping("/main")
     public String main(Model model) {
         model.addAttribute("user", customerUsecase.getCustomer());
         return "main";
     }
-
-
 }
 
 

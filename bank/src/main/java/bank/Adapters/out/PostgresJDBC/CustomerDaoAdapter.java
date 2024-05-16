@@ -2,6 +2,7 @@ package bank.Adapters.out.PostgresJDBC;
 
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -23,14 +24,14 @@ public class CustomerDaoAdapter implements CustomerDao {
     CustomerRepository customerRepository;
 
     @Override
-    public synchronized UserDetails loadCustomerByName(String email) {
+    public synchronized UserDetails loadCustomerByEmail(String email) {
         Customer customer = customerRepository.findByEmail(email).toRecord();
-        return new org.springframework.security.core.userdetails.User(customer.firstName(),
+        return new org.springframework.security.core.userdetails.User(customer.email(),
                 customer.password(), mapRolesToAthorities(customer.roles()));
     }
 
     private synchronized List<? extends GrantedAuthority> mapRolesToAthorities(Set<Roles> roles) {
-        return roles.stream().map(r -> new SimpleGrantedAuthority("ROLE_" + r.name())).toList(); // .collect(Collectors.toList());
+        return roles.stream().map(r -> new SimpleGrantedAuthority("ROLE_" + r.name())).collect(Collectors.toList());
     }
 
     @Override
