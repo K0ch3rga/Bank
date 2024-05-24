@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import bank.Adapters.out.PostgresJDBC.entities.TransactionEntity;
 import bank.Adapters.out.PostgresJDBC.repositories.TransactionRepository;
 import bank.Application.dao.TransactionDao;
-import bank.Application.dto.NewTransactionDto;
+import bank.Domain.NewTransactionDto;
 import bank.Domain.Transaction;
 
 @Service
@@ -18,7 +18,9 @@ public class TransactionDaoAdapter implements TransactionDao {
 
     @Override
     public synchronized void createTransaction(NewTransactionDto transaction) {
-        transactionRepository.save(new TransactionEntity());
+        transactionRepository.save(new TransactionEntity(0, transaction.amount(), transaction.currency(),
+                transaction.time(), transaction.transactionType(), transaction.bankAccountId(),
+                transaction.RecipientBankAccountId()));
     }
 
     @Override

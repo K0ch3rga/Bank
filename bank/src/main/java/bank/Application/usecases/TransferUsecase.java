@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 import bank.Application.dao.AccountDao;
 import bank.Application.dao.TransactionDao;
-import bank.Application.dto.NewTransactionDto;
+import bank.Domain.NewTransactionDto;
 import bank.Domain.BankAccount;
 import bank.Domain.TransactionType;
 import bank.Infrastructure.AccountDoesntExistExeption;
@@ -23,7 +23,7 @@ import bank.Infrastructure.InsufficientFundsException;
 public class TransferUsecase {
     private final AccountDao accountDao;
     private final TransactionDao transactionDao;
-    private final CursService cursService; 
+    private final CursService cursService;
 
     @Autowired
     public TransferUsecase(AccountDao accountDao, TransactionDao transactionDao, CursService cursService) {
@@ -79,7 +79,7 @@ public class TransferUsecase {
     }
 
     /**
-     * Метод для пополнения счёта
+     * Метод для снятия денег со счёта
      * 
      * @param fromId
      * @param count  - целочисленное значение, где берётся самая меньшая единица
@@ -103,7 +103,7 @@ public class TransferUsecase {
     }
 
     /**
-     * Метод для снятия денег со счёта
+     * Метод для пополнения денег счёта
      * 
      * @param toId
      * @param count - целочисленное значение, где берётся самая меньшая единица
@@ -118,12 +118,13 @@ public class TransferUsecase {
         var toAcc = to.get();
         var newTo = new BankAccount(toAcc.id(), toAcc.balance() + count, toAcc.accountHolder(), toAcc.bankId(),
                 toAcc.currency());
+        System.out.println(newTo);
         accountDao.updateAccount(newTo);
         addTransaction(new NewTransactionDto(count, newTo.currency(), LocalDateTime.now(), TransactionType.REFILL,
                 newTo.id(), newTo.id()));
     }
 
-    private void addTransaction(NewTransactionDto transaction) {
+    private void addTransaction(bank.Domain.NewTransactionDto transaction) {
         transactionDao.createTransaction(transaction);
     }
 }

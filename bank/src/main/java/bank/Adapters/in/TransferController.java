@@ -6,7 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import bank.Application.dto.NewTransactionDto;
+import bank.Application.dto.NewRefillDto;
+import bank.Application.dto.NewTransferDto;
+import bank.Application.dto.NewWithdrawalDto;
+import bank.Application.usecases.AccountUsecase;
 import bank.Application.usecases.CustomerUsecase;
 import bank.Application.usecases.TransferUsecase;
 import bank.Domain.Customer;
@@ -17,23 +20,30 @@ import bank.Infrastructure.InsufficientFundsException;
 public class TransferController {
     private final TransferUsecase transferUsecase;
     private final CustomerUsecase customerUsecase;
+    private final AccountUsecase accountUsecase;
 
     @Autowired
-    public TransferController(TransferUsecase transferUsecase, CustomerUsecase customerUsecase) {
+    public TransferController(TransferUsecase transferUsecase, CustomerUsecase customerUsecase,
+            AccountUsecase accountUsecase) {
         this.transferUsecase = transferUsecase;
         this.customerUsecase = customerUsecase;
+        this.accountUsecase = accountUsecase;
     }
 
     @GetMapping("/newtransfer")
     public String newtransfer(Model model) {
+        Customer customer = customerUsecase.getCustomer();
+        var accounts = accountUsecase.getAllByCustomerId(customer.id());
+        System.out.println(customer);
+        model.addAttribute("accounts", accounts);
         return "newtransfer";
     }
 
     @PostMapping("/newtransfer")
-    public String newtransferPost(NewTransactionDto transaction, Model model) {
-        Customer customer = customerUsecase.getCustomer(); // FIXME Придумать способ, как иначе получать
+    public String newtransferPost(NewTransferDto transferDto, Model model) {
         try {
-            transferUsecase.transferMoney(customer.id(), transaction.RecipientBankAccountId(), transaction.amount());
+            transferUsecase.transferMoney(transferDto.RecipientBankAccountId(), transferDto.RecipientBankAccountId(),
+                    transferDto.amount());
         } catch (InsufficientFundsException e) {
             return "redirect:/transferErrorBalance";
         } catch (AccountDoesntExistExeption e) {
@@ -43,9 +53,11 @@ public class TransferController {
         return "transferOk";
     }
 
-    // Нужно прописать три варианта - если баланс ниже суммы перевода, то страница "transferErrorBalance.html",
+    // Нужно прописать три варианта - если баланс ниже суммы перевода, то страница
+    // "transferErrorBalance.html",
     // если реквизиты неверны, то страница "transferErrorNums.html"
-    // в случае успеха снимаются деньги и производится переход на страницу "transferOk.html"
+    // в случае успеха снимаются деньги и производится переход на страницу
+    // "transferOk.html"
 
     @GetMapping("/transferOk")
     public String transferOk(Model model) {
@@ -68,18 +80,19 @@ public class TransferController {
     }
 
     @PostMapping("/withdraft")
-    public String withdraftPost(NewTransactionDto transactionDto, Model model) {
-        Customer customer = customerUsecase.getCustomer();
+    public String withdraftPost(NewWithdrawalDto withdrawalDto, Model model) {
         try {
-            transferUsecase.withdrawMoney(customer.id(), transactionDto.amount());
+            transferUsecase.withdrawMoney(withdrawalDto.bankAccountId(), withdrawalDto.amount());
         } catch (InsufficientFundsException e) {
             return "redirect:/withdraftError";
         }
         return "withdraftOk";
     }
 
-    // Нужно прописать два варианта - если баланс ниже суммы перевода, то страница "withdraftError.html",
-    // в случае успеха снимаются деньги и производится переход на страницу "withdraftOk.html"
+    // Нужно прописать два варианта - если баланс ниже суммы перевода, то страница
+    // "withdraftError.html",
+    // в случае успеха снимаются деньги и производится переход на страницу
+    // "withdraftOk.html"
 
     @GetMapping("/withdraftError")
     public String withdraftError(Model model) {
@@ -93,13 +106,15 @@ public class TransferController {
 
     @GetMapping("/newdeposit")
     public String newdeposit(Model model) {
+        Customer customer = customerUsecase.getCustomer();
+        var accounts = accountUsecase.getAllByCustomerId(customer.id());
+        model.addAttribute("accounts", accounts);
         return "newdeposit";
     }
 
     @PostMapping("/newdeposit")
-    public String newdepositPost(NewTransactionDto transactionDto, Model model) {
-        Customer customer = customerUsecase.getCustomer();
-        transferUsecase.refillMoney(customer.id(), transactionDto.amount());
+    public String newdepositPost(NewRefillDto newRefillDto, Model model) {
+        transferUsecase.refillMoney(newRefillDto.bankAccountId(), newRefillDto.amount());
         return "depositOk";
     }
 

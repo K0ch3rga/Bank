@@ -1,9 +1,9 @@
 package bank.Adapters.out.PostgresJDBC.entities;
 
 import java.util.Set;
+
 import java.util.HashSet;
 import java.util.Arrays;
-
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
@@ -61,5 +61,4 @@ public class CustomerEntity {
     public Customer toRecord() {
         return new Customer(id, firstName, lastName, phone, email, password, roles);
     }
-
 }

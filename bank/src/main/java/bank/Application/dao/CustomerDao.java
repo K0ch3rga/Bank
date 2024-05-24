@@ -1,13 +1,14 @@
 package bank.Application.dao;
 
-import org.springframework.security.core.userdetails.UserDetails;
+import java.util.Optional;
 
+import bank.Adapters.out.PostgresJDBC.entities.CustomerEntity;
 import bank.Application.dto.NewCustomerDto;
-import bank.Domain.Customer;
+import bank.Infrastructure.AccountDoesntExistExeption;
 import bank.Infrastructure.AccountExistsException;
 
 public interface CustomerDao {
     // UserDetails loadCustomerByEmail(String email);
-    Customer loadCustomerByEmail(String email);
+    Optional<CustomerEntity> loadCustomerByEmail(String email) throws AccountDoesntExistExeption;
     void saveCustomer(NewCustomerDto newCustomer) throws AccountExistsException;
 }

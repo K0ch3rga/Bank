@@ -37,6 +37,7 @@ public class AccountDaoAdapter implements AccountDao {
     public synchronized void updateAccount(BankAccount account) {
         AccountEntity newAccountEntity = new AccountEntity(account.id(), account.balance(), account.accountHolder(),
                 account.bankId(), account.currency());
+        System.out.println(newAccountEntity.id);
         accountRepository.save(newAccountEntity);
     }
 

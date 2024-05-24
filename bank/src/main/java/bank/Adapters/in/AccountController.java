@@ -46,11 +46,7 @@ public class AccountController {
     @PostMapping("/newbill")
     public String newbillPost(NewAccountDto newAccount,Model model) {
         var customer = customerUsecase.getCustomer();
-        
-        System.out.println(customer);
-        System.out.println(newAccount);
         BankAccount account = accountUsecase.createNewAccount(new NewAccountDto(customer.id(), 0, newAccount.currency()));
-        
         model.addAttribute("account", account);
         return "redirect:/billadded";
     }

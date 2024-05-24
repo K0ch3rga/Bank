@@ -8,3 +8,6 @@ build
 .vs
 .vscode
 .idea
+
+# i don't want delete
+.\bank\src\main\java\bank\Application\usecases\CustomerDetails.java

@@ -13,17 +13,39 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(authz -> authz
-                .requestMatchers("/status", "/registration", "login", "/img/bg.png", "/styles/main.css").permitAll()
-                .requestMatchers("/list", "/main", "/newbill", "/billadded", "/newtransfer", "/transferOk",
-                        "/transferErrorNums", "/transferErrorBalance", "/withdraft", "/withdraftError", "/withdraftOk",
-                        "/newdeposit", "/depositOk",
-                        "/checkbalance", "/showbalance", "/printbalance").hasRole("CUSTOMER")
-                .requestMatchers("/admin").hasRole("ADMIN"))
-                .formLogin(t -> t.loginPage("/login").permitAll()
-                        .usernameParameter("email")
-                        .defaultSuccessUrl("/main")
-                        .failureForwardUrl("/login?error"));
+        // return http.authorizeHttpRequests(authz -> authz
+        // .requestMatchers("/status", "/registration", "/img/bg.png",
+        // "/styles/main.css")
+        // .permitAll()
+        // .requestMatchers("/list", "/main", "/newbill", "/billadded", "/newtransfer",
+        // "/transferOk", "/transferErrorNums", "/transferErrorBalance", "/withdraft",
+        // "/withdraftError", "/withdraftOk", "/newdeposit", "/depositOk",
+        // "/checkbalance", "/showbalance", "/printbalance", "/logout")
+        // .hasRole("CUSTOMER")
+        // .requestMatchers("/admin").hasRole("ADMIN"))
+        // .formLogin(t -> t.loginPage("/login").permitAll()
+        // .usernameParameter("email")
+        // .passwordParameter("password")
+        // .defaultSuccessUrl("/main")
+        // .successForwardUrl("/main")
+        // // .loginProcessingUrl("/login")
+        // .failureForwardUrl("/login?error"))
+        // .logout(t -> t.logoutUrl("/logout").permitAll()
+        // .logoutSuccessUrl("/login"))
+        // .build();
+        http.formLogin(t -> t.loginPage("/login").permitAll()
+                .usernameParameter("email")
+                .passwordParameter("password")
+                .defaultSuccessUrl("/main", true))
+                .logout(t -> t.logoutUrl("/logout").permitAll(true)
+                        .logoutSuccessUrl("/login"))
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/img/**", "/styles/**", "/status", "/regisration").permitAll()
+                        .requestMatchers("/main", "/list", "/newbill", "/billadded", "/newtransfer",
+                                "/transferOk", "/transferErrorNums", "/transferErrorBalance", "/withdraft",
+                                "/withdraftError", "/withdraftOk", "/newdeposit", "/depositOk", "/checkbalance",
+                                "/showbalance", "/printbalance")
+                        .hasRole("CUSTOMER"));
         return http.build();
     }
 

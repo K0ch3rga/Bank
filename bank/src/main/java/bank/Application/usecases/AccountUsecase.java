@@ -54,7 +54,7 @@ public class AccountUsecase {
     }
 
     public List<BankAccount> getAllByCustomerId(long id) {
-        return accountDao.getAllAccountsByCustomerId(0);
+        return accountDao.getAllAccountsByCustomerId(id);
     }
     
     @Deprecated

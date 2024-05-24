@@ -9,11 +9,13 @@
 <body th:style="'background-image: url(/img/bg.png)'">
 <p>Пожалуйста, авторизуйтесь:</p>
 <form class="form" th:action="@{/login}" method="post">
-  <label class="login"> Логин : <input type="email" name="email" /> </label>
-  <label class="login"> Пароль: <input type="password" name="password" /> </label>
-  <div><input class="button purple inp logininp" type="submit" value="Войти" /></div>
-  <a th:href="@{/registration}" class="button purple input">Зарегестрироваться</a>
+  <label for="email">Email</label>
+  <input name="email" type="email" required>
+  <label for="password">Пароль</label>
+  <input name="password" type="password" required>
+  <button type="submit" value="Войти" />
 </form>
+<a th:href="@{/registration}" class="button purple input">Зарегестрироваться</a>
 </body>
 
 </html>

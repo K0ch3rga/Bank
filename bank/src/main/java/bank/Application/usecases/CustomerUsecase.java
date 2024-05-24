@@ -1,6 +1,7 @@
 package bank.Application.usecases;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -8,11 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import bank.Adapters.out.PostgresJDBC.entities.CustomerEntity;
 import bank.Application.dao.CustomerDao;
 import bank.Application.dto.NewCustomerDto;
 import bank.Domain.Customer;
@@ -42,20 +45,27 @@ public class CustomerUsecase implements UserDetailsService {
      */
     public Customer getCustomer() {
         var user = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        System.out.println(user);
-        System.out.println(user instanceof UserDetails);
         if (user instanceof UserDetails) {
-            var userdetails = (UserDetails)user;
-            return customerDao.loadCustomerByEmail(userdetails.getUsername());
+            var userdetails = (UserDetails) user;
+            return customerDao.loadCustomerByEmail(userdetails.getUsername()).get().toRecord();
         }
-        return new Customer(0, "null", "null", "null", "null", "null", null);
+        return null;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Customer customer = customerDao.loadCustomerByEmail(username);
-        return new org.springframework.security.core.userdetails.User(customer.email(), customer.password(),
-        mapRolesToAthorities(customer.roles()));
+        Optional<CustomerEntity> entity = customerDao.loadCustomerByEmail(username);
+        if (entity.isPresent()) {
+            Customer customer = entity.get().toRecord();
+            new CustomerDetails(customer);
+            return User.builder()
+                    .username(customer.email())
+                    .password(customer.password())
+                    .authorities(mapRolesToAthorities(customer.roles()))
+                    .build();
+        }
+
+        throw new UsernameNotFoundException("Customer with email " + username + " not found");
     }
 
     private List<? extends GrantedAuthority> mapRolesToAthorities(Set<Roles> roles) {
