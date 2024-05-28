@@ -44,7 +44,7 @@ public class SecurityConfig {
                         .requestMatchers("/main", "/list", "/newbill", "/billadded", "/newtransfer",
                                 "/transferOk", "/transferErrorNums", "/transferErrorBalance", "/withdraft",
                                 "/withdraftError", "/withdraftOk", "/newdeposit", "/depositOk", "/checkbalance",
-                                "/showbalance", "/printbalance")
+                                "/showbalance", "/printbalance", "/mybills")
                         .hasRole("CUSTOMER"));
         return http.build();
     }

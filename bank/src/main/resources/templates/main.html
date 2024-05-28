@@ -8,10 +8,12 @@
 </head>
 
 <body th:style="'background-image: url(/img/bg.png)'">
-  <a th:href="@{logout}">Выйти<a>
       <p>Здравствуйте, <span th:value="${user.firstName}" th:text="${user.firstName}"></span> ! Вы успешно вошли в свой
         банковский аккаунт.<br> Выберите нужное действие:</p>
       <div class="buttons">
+        <a class="button purple" th:href="@{mybills}">
+          <div>Мои счета</div>
+        </a>
         <a class="button purple" th:href="@{newbill}">
           <div>Открыть новый счет</div>
         </a>
@@ -24,13 +26,9 @@
         <a class="button purple" th:href="@{newdeposit}">
           <div>Пополнить баланс</div>
         </a>
-        <th:block th:each="account : ${accounts}">
-          <a>
-            <span th:text="${account.id()}" />
-            <span th:text="${account.balance()}" />
-            <span th:text="${account.currency()}" />
-          </a>
-        </th:block>
+        <a class="button purple" th:href="@{logout}">
+          <div>Выйти</div>
+        </a>
       </div>
 </body>
 

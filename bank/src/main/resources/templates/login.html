@@ -10,12 +10,13 @@
 <p>Пожалуйста, авторизуйтесь:</p>
 <form class="form" th:action="@{/login}" method="post">
   <label for="email">Email</label>
-  <input name="email" type="email" required>
+  <label class = "loginp"><input name="email" type="email" required></label>
   <label for="password">Пароль</label>
-  <input name="password" type="password" required>
-  <button type="submit" value="Войти" />
+  <label class = "loginp"><input name="password" type="password" required></label>
+  <button class="button purple input" type="submit" value="Войти">Войти</button>
+  <p></p>
+  <a th:href="@{/registration}" class="button purple input">Войти</a>
 </form>
-<a th:href="@{/registration}" class="button purple input">Зарегестрироваться</a>
 </body>
 
 </html>

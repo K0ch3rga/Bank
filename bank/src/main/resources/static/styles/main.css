@@ -45,8 +45,12 @@ input{
 }
 
 .inp{
-    margin-top: 5%;
+    margin-top: 12%;
     height:91px;
+}
+
+.withd{
+    margin-top: 13%;
 }
 form{
     margin-bottom: 3%;
@@ -63,11 +67,14 @@ body{
 .buttons {
     margin-top: 5%;
     width: 30%;
-    height: 550px;
+    height: 580px;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: space-between;
+}
+.loginp{
+    margin-bottom: 4%;
 }
 
 .button {

@@ -43,6 +43,11 @@ public class AccountController {
         return "main";
     }
 
+    @GetMapping("/mybills")
+    public String mybills(Model model) {
+        return "mybills";
+    }
+
     @PostMapping("/newbill")
     public String newbillPost(NewAccountDto newAccount,Model model) {
         var customer = customerUsecase.getCustomer();
