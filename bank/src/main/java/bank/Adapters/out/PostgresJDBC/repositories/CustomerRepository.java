@@ -7,8 +7,11 @@ import org.springframework.stereotype.Repository;
 
 import bank.Adapters.out.PostgresJDBC.entities.CustomerEntity;
 
+import java.util.Optional;
+
 @Repository
 public interface CustomerRepository extends CrudRepository<CustomerEntity, Long> {
-    Optional<CustomerEntity> findByFirstName(String firstName);
-    Optional<CustomerEntity> findByEmail(String email);
+    CustomerEntity findByFirstName(String firstName);
+    CustomerEntity findByEmail(String email);
+    CustomerEntity findFirtById(Long id);
 }
