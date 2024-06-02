@@ -10,8 +10,8 @@ import jakarta.persistence.Table;
 public class BankEntity {
     @Id
     @GeneratedValue
-    public long id;
-    public String name;
+    private long id;
+    private String name;
 
     public BankEntity(long id, String name) {
         this.id = id;
@@ -20,5 +20,21 @@ public class BankEntity {
 
     public BankEntity() {
         this(0, "Ошибка");
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

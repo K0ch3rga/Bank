@@ -8,9 +8,9 @@
 </head>
 
 <body th:style="'background-image: url(/img/bg.png)'">
-  <form class="form" th:action="@{/newtransfer}" method="post">
+  <form class="form" th:action="@{/newtransfer}" th:object="${transferDto}" method="post">
     <p>Выберите счет:</p>
-    <select>
+    <select name="bankAccountId">
       <option th:each="account : ${accounts}" th:value="${account.id()}">
         <span th:text="${account.id()}" />
         <span th:text="${account.balance()}" />
@@ -18,8 +18,10 @@
       </option>
     </select>
     <p>Введите реквизиты:</p>
-    <label> Реквизиты : <input type="text" name="username" /> </label>
-    <label> Сумма: <input type="text" name="password" /> </label>
+    <label for="RecipientBankAccountId">Реквизиты:</label>
+    <input type="text" name="RecipientBankAccountId" />
+    <label for="amount">Сумма:</label>
+    <input type="text" name="amount" />
     <div><input class="button purple inp" type="submit" value="Отправить" /></div>
   </form>
 </body>

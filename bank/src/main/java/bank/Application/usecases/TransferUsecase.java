@@ -4,10 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import bank.Application.dao.AccountDao;
 import bank.Application.dao.TransactionDao;
 import bank.Domain.NewTransactionDto;
+import bank.Domain.Transaction;
 import bank.Domain.BankAccount;
 import bank.Domain.TransactionType;
 import bank.Infrastructure.AccountDoesntExistExeption;
@@ -45,7 +47,7 @@ public class TransferUsecase {
      * @throws InsufficientFunds
      */
     public void transferMoney(long fromId, long toId, long count)
-            throws AccountDoesntExistExeption, InsufficientFundsException {
+            throws AccountDoesntExistExeption, InsufficientFundsException { // FIXME same account transfer is wrong
         var from = accountDao.getAccoinyById(fromId);
         var to = accountDao.getAccoinyById(toId);
         if (!from.isPresent())
@@ -70,8 +72,8 @@ public class TransferUsecase {
 
         var newFrom = new BankAccount(fromAcc.id(), fromAcc.balance() - count, fromAcc.accountHolder(),
                 fromAcc.bankId(), fromAcc.currency());
-        var newTo = new BankAccount(toAcc.id(), toAcc.balance() + convertedCount, toAcc.accountHolder(), toAcc.bankId(),
-                toAcc.currency());
+        var newTo = new BankAccount(toAcc.id(), toAcc.balance() + convertedCount, toAcc.accountHolder(),
+                toAcc.bankId(), toAcc.currency());
         accountDao.updateAccount(newFrom);
         accountDao.updateAccount(newTo);
         addTransaction(new NewTransactionDto(convertedCount, newTo.currency(), LocalDateTime.now(),
@@ -111,7 +113,6 @@ public class TransferUsecase {
      *              (Для рубля - копейки)
      */
     public void refillMoney(long toId, long count) {
-        // TODO check if money is right currency
         var to = accountDao.getAccoinyById(toId);
         if (!to.isPresent())
             throw new AccountDoesntExistExeption("", toId);
@@ -126,5 +127,9 @@ public class TransferUsecase {
 
     private void addTransaction(bank.Domain.NewTransactionDto transaction) {
         transactionDao.createTransaction(transaction);
+    }
+
+    public List<Transaction> geTransactions(long accountId) {
+        return transactionDao.getAllbyAccountId(accountId);
     }
 }

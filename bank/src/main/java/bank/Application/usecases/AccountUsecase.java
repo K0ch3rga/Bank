@@ -14,12 +14,14 @@ import bank.Infrastructure.AccountDoesntExistExeption;
 /**
  * Класс для взаимодействия с аккаунтом
  * (Создание, получение и обновление)
+ * 
  * @see TransferUsecase
  */
 @Service
 public class AccountUsecase {
-    
+
     private final AccountDao accountDao;
+
     @Autowired
     public AccountUsecase(AccountDao accountDao) {
         this.accountDao = accountDao;
@@ -27,6 +29,7 @@ public class AccountUsecase {
 
     /**
      * Создаёт новый акаунт
+     * 
      * @param account
      */
     public BankAccount createNewAccount(NewAccountDto account) {
@@ -35,6 +38,7 @@ public class AccountUsecase {
 
     /**
      * Возвращает аккаунт полученный по id
+     * 
      * @param id
      * @return
      * @throws AccountDoesntExistExeption
@@ -46,19 +50,16 @@ public class AccountUsecase {
     /**
      * Обновляет аккаунт по id с предоставленными данными
      * Не должне менять баланс
+     * 
      * @param account
      */
     public void updateAccount(BankAccount account) {
-        //TODO add checks on balance
+        // TODO add checks on balance
         accountDao.updateAccount(account);
     }
 
+    // FIXME
     public List<BankAccount> getAllByCustomerId(long id) {
         return accountDao.getAllAccountsByCustomerId(id);
-    }
-    
-    @Deprecated
-    public List<BankAccount> getAll() {
-        return accountDao.getAll();
     }
 }

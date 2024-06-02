@@ -16,15 +16,15 @@ import jakarta.persistence.Table;
 public class TransactionEntity {
     @Id
     @GeneratedValue
-    public long id;
-    public long amount;
+    private long id;
+    private long amount;
     @Enumerated(EnumType.STRING)
-    public CurrencyType currency;
-    public LocalDateTime time;
+    private CurrencyType currency;
+    private LocalDateTime time;
     @Enumerated(EnumType.STRING)
-    public TransactionType transactionType;
-    public long bankAccountId;
-    public long recipientBankAccountId;
+    private TransactionType transactionType;
+    private long bankAccountId;
+    private long recipientBankAccountId;
 
     public TransactionEntity(long id, long amount, CurrencyType currency, LocalDateTime time,
             TransactionType transactionType, long bankAccountId, long recipientBankAccountId) {
@@ -40,4 +40,61 @@ public class TransactionEntity {
     public TransactionEntity() {
         this(0, 0, CurrencyType.RUB, LocalDateTime.now(), TransactionType.TRANSFER, 0, 0);
     }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public long getAmount() {
+        return amount;
+    }
+
+    public void setAmount(long amount) {
+        this.amount = amount;
+    }
+
+    public CurrencyType getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(CurrencyType currency) {
+        this.currency = currency;
+    }
+
+    public LocalDateTime getTime() {
+        return time;
+    }
+
+    public void setTime(LocalDateTime time) {
+        this.time = time;
+    }
+
+    public TransactionType getTransactionType() {
+        return transactionType;
+    }
+
+    public void setTransactionType(TransactionType transactionType) {
+        this.transactionType = transactionType;
+    }
+
+    public long getBankAccountId() {
+        return bankAccountId;
+    }
+
+    public void setBankAccountId(long bankAccountId) {
+        this.bankAccountId = bankAccountId;
+    }
+
+    public long getRecipientBankAccountId() {
+        return recipientBankAccountId;
+    }
+
+    public void setRecipientBankAccountId(long recipientBankAccountId) {
+        this.recipientBankAccountId = recipientBankAccountId;
+    }
+
 }

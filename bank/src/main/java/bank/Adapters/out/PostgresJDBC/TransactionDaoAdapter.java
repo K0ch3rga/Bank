@@ -24,10 +24,10 @@ public class TransactionDaoAdapter implements TransactionDao {
     }
 
     @Override
-    public synchronized List<Transaction> getAllbyClientId(long id) {
+    public synchronized List<Transaction> getAllbyAccountId(long id) {
         return transactionRepository.findByBankAccountIdOrRecipientBankAccountId(id, id).stream()
-                .map((t) -> new Transaction(t.id, t.amount, t.currency, t.time, t.transactionType, t.bankAccountId,
-                        t.recipientBankAccountId))
+                .map((t) -> new Transaction(t.getId(), t.getAmount(), t.getCurrency(), t.getTime(), t.getTransactionType(), t.getBankAccountId(),
+                        t.getRecipientBankAccountId()))
                 .toList();
     }
 }

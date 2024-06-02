@@ -8,10 +8,18 @@
 </head>
 
 <body th:style="'background-image: url(/img/bg.png)'">
-<p> На вашем счете: </p>
-<form th:action="@{/main}" method="get">
-  <button class="button purple"><div>Вернуться в главное меню</div></button>
-</form>
+  <p> На вашем счету: <span th:text="${account.balance()}"></span></p>
+  <div th:each="transaction : ${transactions}">
+    <span th:text="${transaction.time()}"></span>
+    <span th:text="${transaction.amount}"></span>
+    from:
+    <span th:text="${transaction.bankAccountId()}"></span>
+    to:
+    <span th:text="${transaction.recipientBankAccountId()}"></span>
+  </div>
+  <a th:href="@{/main}" class="button purple">
+    Вернуться в главное меню
+  </a>
 </body>
 
 </html>

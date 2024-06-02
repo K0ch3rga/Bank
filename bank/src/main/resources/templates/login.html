@@ -6,17 +6,17 @@
   <title>Spring Security Example </title>
   <link th:href="@{/styles/main.css}" rel="stylesheet" />
 </head>
+
 <body th:style="'background-image: url(/img/bg.png)'">
-<p>Пожалуйста, авторизуйтесь:</p>
-<form class="form" th:action="@{/login}" method="post">
-  <label for="email">Email</label>
-  <label class = "loginp"><input name="email" type="email" required></label>
-  <label for="password">Пароль</label>
-  <label class = "loginp"><input name="password" type="password" required></label>
-  <button class="button purple input" type="submit" value="Войти">Войти</button>
-  <p></p>
-  <a th:href="@{/registration}" class="button purple input">Войти</a>
-</form>
+  <p>Пожалуйста, авторизуйтесь:</p>
+  <form class="form" th:action="@{/login}" method="post">
+    <label for="email">Email</label>
+    <label class="loginp"><input name="email" type="email" required></label>
+    <label for="password">Пароль</label>
+    <label class="loginp"><input name="password" type="password" required></label>
+    <button class="button purple input" type="submit" value="Войти">Войти</button>
+    <a th:href="@{/registration}" class="button purple input">Зарегистрироваться</a>
+  </form>
 </body>
 
 </html>

@@ -7,18 +7,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import bank.Application.dto.NewCustomerDto;
-import bank.Application.usecases.AccountUsecase;
 import bank.Application.usecases.CustomerUsecase;
 
 @Controller
 public class CustomerController {
     private final CustomerUsecase customerUsecase;
-    private final AccountUsecase accountUsecase;
 
     @Autowired
-    public CustomerController(CustomerUsecase customerUsecase, AccountUsecase accountUsecase) {
+    public CustomerController(CustomerUsecase customerUsecase) {
         this.customerUsecase = customerUsecase;
-        this.accountUsecase = accountUsecase;
     }
 
     @GetMapping("/registration")
@@ -46,8 +43,6 @@ public class CustomerController {
     public String main(Model model) {
         var customer = customerUsecase.getCustomer();
         model.addAttribute("user", customer);
-        var accounts = accountUsecase.getAllByCustomerId(customer.id());
-        model.addAttribute("accounts", accounts);
         return "main";
     }
 }

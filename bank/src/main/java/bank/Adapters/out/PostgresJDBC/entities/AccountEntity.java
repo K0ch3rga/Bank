@@ -13,21 +13,61 @@ import bank.Domain.CurrencyType;
 public class AccountEntity {
     @Id
     @GeneratedValue
-    public Long id;
-    public Long balance;
-    public Long accountHolder;
-    public Long bankId;
+    private Long id;
+    private Long balance;
+    private Long accountHolder;
+    private Long bankId;
     @Enumerated(EnumType.STRING)
-    public CurrencyType currency;
+    private CurrencyType currency;
 
-    public AccountEntity(Long id, Long balance, Long accountHolder, Long bankId, CurrencyType currency){
+    public AccountEntity(Long id, Long balance, Long accountHolder, Long bankId, CurrencyType currency) {
         this.balance = balance;
         this.accountHolder = accountHolder;
         this.bankId = bankId;
         this.currency = currency;
     }
 
-    public AccountEntity(){
+    public AccountEntity() {
         this(null, null, null, null, CurrencyType.RUB);
     }
-} 
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public long getBalance() {
+        return balance;
+    }
+
+    public void setBalance(long balance) {
+        this.balance = balance;
+    }
+
+    public long getAccountHolder() {
+        return accountHolder;
+    }
+
+    public void setAccountHolder(long accountHolder) {
+        this.accountHolder = accountHolder;
+    }
+
+    public long getBankId() {
+        return bankId;
+    }
+
+    public void setBankId(long bankId) {
+        this.bankId = bankId;
+    }
+
+    public CurrencyType getCurrencyType() {
+        return currency;
+    }
+
+    public void setCurrencyType(CurrencyType currencyType) {
+        this.currency = currencyType;
+    }
+}

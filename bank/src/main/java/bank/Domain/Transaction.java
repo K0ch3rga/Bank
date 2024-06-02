@@ -9,6 +9,6 @@ public record Transaction(
         LocalDateTime time,
         TransactionType transactionType,
         long bankAccountId,
-        long RecipientBankAccountId
+        long recipientBankAccountId
 ) {
 }

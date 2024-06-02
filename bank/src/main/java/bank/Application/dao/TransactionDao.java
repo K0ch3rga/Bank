@@ -8,5 +8,5 @@ import bank.Domain.Transaction;
 public interface TransactionDao {
     void createTransaction(NewTransactionDto transaction);
 
-    List<Transaction> getAllbyClientId(long id);
+    List<Transaction> getAllbyAccountId(long id);
 }

@@ -34,7 +34,7 @@ public class TransferController {
     public String newtransfer(Model model) {
         Customer customer = customerUsecase.getCustomer();
         var accounts = accountUsecase.getAllByCustomerId(customer.id());
-        System.out.println(customer);
+
         model.addAttribute("accounts", accounts);
         return "newtransfer";
     }
@@ -42,7 +42,7 @@ public class TransferController {
     @PostMapping("/newtransfer")
     public String newtransferPost(NewTransferDto transferDto, Model model) {
         try {
-            transferUsecase.transferMoney(transferDto.RecipientBankAccountId(), transferDto.RecipientBankAccountId(),
+            transferUsecase.transferMoney(transferDto.bankAccountId(), transferDto.RecipientBankAccountId(),
                     transferDto.amount());
         } catch (InsufficientFundsException e) {
             return "redirect:/transferErrorBalance";
@@ -76,6 +76,9 @@ public class TransferController {
 
     @GetMapping("/withdraft")
     public String withdraft(Model model) {
+        var customer = customerUsecase.getCustomer();
+        var accounts = accountUsecase.getAllByCustomerId(customer.id());
+        model.addAttribute("accounts", accounts);
         return "withdraft";
     }
 

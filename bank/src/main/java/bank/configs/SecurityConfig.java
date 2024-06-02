@@ -40,7 +40,7 @@ public class SecurityConfig {
                 .logout(t -> t.logoutUrl("/logout").permitAll(true)
                         .logoutSuccessUrl("/login"))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/img/**", "/styles/**", "/status", "/regisration").permitAll()
+                        .requestMatchers("/img/**", "/styles/**", "/status", "/registration").permitAll()
                         .requestMatchers("/main", "/list", "/newbill", "/billadded", "/newtransfer",
                                 "/transferOk", "/transferErrorNums", "/transferErrorBalance", "/withdraft",
                                 "/withdraftError", "/withdraftOk", "/newdeposit", "/depositOk", "/checkbalance",
