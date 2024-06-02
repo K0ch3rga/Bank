@@ -7,7 +7,7 @@ public class HelpCommand extends Command {
 
 
     public HelpCommand() {
-        super("/help", "Вывести список команд", "/help", new Roles[]{Roles.CUSTOMER});
+        super("/help", "Вывести список команд", "/help", new Roles[]{Roles.CUSTOMER, Roles.NOTAUTHORIZED});
     }
 
     @Override

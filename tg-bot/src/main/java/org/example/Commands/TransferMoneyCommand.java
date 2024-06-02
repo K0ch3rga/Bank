@@ -13,6 +13,6 @@ public class TransferMoneyCommand extends Command{
 
     @Override
     public String execute(String[] args, Roles role) {
-        return null;
+        return "Перевод";
     }
 }

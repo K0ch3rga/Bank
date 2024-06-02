@@ -3,6 +3,7 @@ package org.example;
 import org.example.Commands.Command;
 import org.reflections.Reflections;
 import org.reflections.scanners.SubTypesScanner;
+import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class CommandRegister {
+
     public CommandRegister(CommandHandler commandHandler) {
         this.commandHandler = commandHandler;
     }

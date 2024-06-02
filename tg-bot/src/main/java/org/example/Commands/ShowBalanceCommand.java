@@ -12,6 +12,6 @@ public class ShowBalanceCommand extends Command {
 
     @Override
     public String execute(String[] args, Roles role) {
-        return null;
+        return "Баланс";
     }
 }

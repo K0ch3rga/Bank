@@ -5,14 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fbd7be52-4e41-44bb-89ae-56951d83f9e2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/TeleBotInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank/src/main/java/bank/Adapters/out/PostgresJDBC/AccountDaoAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/bank/src/main/java/bank/Adapters/out/PostgresJDBC/AccountDaoAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bank/src/main/java/bank/Adapters/out/PostgresJDBC/repositories/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/bank/src/main/java/bank/Adapters/out/PostgresJDBC/repositories/CustomerRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank/src/main/java/bank/Domain/Roles.java" beforeDir="false" afterPath="$PROJECT_DIR$/bank/src/main/java/bank/Domain/Roles.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tg-bot/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/tg-bot/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bank/src/main/java/bank/BankApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/bank/src/main/java/bank/BankApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/CommandHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/CommandHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/CommandRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/CommandRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Commands/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Commands/Command.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Commands/HelpCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Commands/HelpCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Commands/OpenNewAccountCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Commands/OpenNewAccountCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Commands/ShowBalanceCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Commands/ShowBalanceCommand.java" afterDir="false" />
@@ -21,9 +21,7 @@
       <change beforePath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Commands/WithdrawBalanceCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Commands/WithdrawBalanceCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/ICommandHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/ICommandHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/Roles.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/TeleBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/tg-bot/src/main/java/org/example/TeleBot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tg-bot/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/tg-bot/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +87,7 @@
   &quot;isMigrated&quot;: true
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
@@ -106,7 +104,7 @@
   "keyToString": {
     "Application.TgBot.executor": "Run",
     "Gradle.Bank [:tg-bot:Main.main()].executor": "Run",
-    "Gradle.Bank:tg-bot [:tg-bot:Main.main()].executor": "Debug",
+    "Gradle.Bank:tg-bot [:tg-bot:Main.main()].executor": "Run",
     "Gradle.Build Bank.executor": "Run",
     "Kotlin script (Beta).build.gradle.kts.executor": "Run",
     "RequestMappingsPanelOrder0": "0",
@@ -116,7 +114,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.BankApplication.executor": "Run",
+    "Spring Boot.BankApplication.executor": "Debug",
+    "Spring Boot.Main.executor": "Run",
     "git-widget-placeholder": "tg-bot",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/Programming/Java/Bank",
@@ -127,7 +126,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.TgBot">
+  <component name="RunManager" selected="Spring Boot.Main">
     <configuration name="TgBot" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.example.Main" />
       <module name="Bank.tg-bot.main" />
@@ -142,10 +141,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <list>
-      <item itemvalue="Application.TgBot" />
-      <item itemvalue="Spring Boot.BankApplication" />
-    </list>
+    <configuration name="Main" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="Bank.tg-bot.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.Main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-22-openjdk-22-4caba194b151-f504ca98" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -166,21 +175,23 @@
       <workItem from="1715837064878" duration="2884000" />
       <workItem from="1715839983726" duration="1590000" />
       <workItem from="1715841593715" duration="12121000" />
-      <workItem from="1715855275587" duration="2858000" />
+      <workItem from="1715855275587" duration="12079000" />
+      <workItem from="1717319391583" duration="18120000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="java.lang.NoClassDefFoundError" package="java.lang" />
-          <option name="timeStamp" value="1" />
-        </breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

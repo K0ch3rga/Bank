@@ -1,26 +1,24 @@
 package org.example;
 
+import bank.Domain.Customer;
 import bank.Domain.Roles;
 import jakarta.inject.Inject;
 import org.example.Commands.Command;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 import bank.Adapters.out.PostgresJDBC.repositories.CustomerRepository;
-import org.glassfish.jersey.Beta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Role;
 import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class CommandHandler implements ICommandHandler {
-    private static final ArrayList<Command> commands = new ArrayList<>();
 
     @Autowired
     private CustomerRepository customerRepository;
+    private static final ArrayList<Command> commands = new ArrayList<>();
 
     public void registerCommand(Command command) {
         commands.add(command);
@@ -34,19 +32,21 @@ public class CommandHandler implements ICommandHandler {
                 .orElse(null);
     }
 
-    public CommandHandler() {}
 
     public String handle(String command, String[] args, Long chatId) {
         var cmd = findCommandByName(command);
-        var user = customerRepository.findById(chatId).get().toRecord();
+        var user = customerRepository.findFirtById(chatId);
+
         Set<Roles> userRoles = new HashSet<>();
         if (cmd == null)
             return String.format("Неизвестная команда %s", command);
 
         if (user == null)
             userRoles.add(Roles.NOTAUTHORIZED);
-        else
-            userRoles = user.roles();
+        else {
+            var userEntity = user.toRecord();
+            userRoles = userEntity.roles();
+        }
         var cmdRoles = cmd.RequiredRoles;
         if (userRoles.stream().anyMatch(r-> Arrays.stream(cmdRoles).toList().contains(r))) {
             int maxPriority = userRoles.stream().map(Roles::getPriority).max(Comparator.naturalOrder()).get();

@@ -16,15 +16,16 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 @Service
 public class TeleBot extends TelegramLongPollingBot {
-    @Autowired
+
     private CommandHandler commandHandler;
-    @Autowired
     private CommandRegister commandRegister;
 
-
-    public TeleBot() {
+    @Autowired
+    public TeleBot(CommandHandler commandHandler, CommandRegister commandRegister) {
         super();
-        commandRegister.registerAllCommand();
+        this.commandHandler = commandHandler;
+        this.commandRegister = commandRegister;
+        this.commandRegister.registerAllCommand();
     }
 
     @Override
@@ -58,6 +59,6 @@ public class TeleBot extends TelegramLongPollingBot {
 
     @Override
     public String getBotToken() {
-        return "6624519391:AAGh_Rzyty0ZocCpF8-nRYAUgaNT30ntG8k";
+        return "";
     }
 }
