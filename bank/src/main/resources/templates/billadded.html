@@ -9,11 +9,11 @@
 
 <body th:style="'background-image: url(/img/bg.png)'">
   <p>Счет создан!</p>
-  <form th:action="@{/main}" method="get">
-    <button class="button purple">
-      <div>Вернуться в главное меню</div>
-    </button>
-  </form>
+
+  <a th:href="@{/main}" class="button purple">
+    <div>Вернуться в главное меню</div>
+  </a>
+
 </body>
 
 </html>

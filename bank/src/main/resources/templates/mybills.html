@@ -3,22 +3,30 @@
   xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
 <head>
-  <title> Счет создан </title>
+  <title> Мои счета </title>
   <link th:href="@{/styles/main.css}" rel="stylesheet" />
 </head>
 
 <body th:style="'background-image: url(/img/bg.png)'">
-<p>Доступные счета:</p>
-<th:block th:each="account : ${accounts}">
-  <a th:href="@{/showbalance(id=${account.id()})}">
-    <span th:text="${account.id()}" />
-    <span th:text="${account.balance()}" />
-    <span th:text="${account.currency()}" />
-  </a>
-</th:block>
-<form th:action="@{/main}" method="get">
-  <button class="button purple"><div>Вернуться в главное меню</div></button>
-</form>
+  <p>Доступные счета:</p>
+  <div class="account-list">
+    <th:block th:each="account : ${accounts}">
+      <a th:href="@{/showbalance(id=${account.id()})}" class="account">
+        <span>Номер счёта: <span th:text="${account.id()}" /></span>
+        <span>
+          <span>Сумма: </span>
+          <span th:text="${account.balance()}" />
+          <span th:text="${account.currency()}" />
+        </span>
+      </a>
+    </th:block>
+  </div>
+
+  <footer>
+    <a th:href="@{/main}" class="button purple">
+      <div>Вернуться в главное меню</div>
+    </a>
+  </footer>
 </body>
 
 </html>

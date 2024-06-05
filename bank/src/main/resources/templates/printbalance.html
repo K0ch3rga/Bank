@@ -8,13 +8,17 @@
 </head>
 
 <body th:style="'background-image: url(/img/bg.png)'">
-<p>Чековая лента закончилась, приносим свои извинения!</p>
-<form th:action="@{/showbalance}" method="get">
-  <button class="button purple"><div>Вывести баланс на экран</div></button>
-</form>
-<form th:action="@{/main}" method="get">
-  <button class="button purple"><div>Вернуться в главное меню</div></button>
-</form>
+  <p>Чековая лента закончилась, приносим свои извинения!</p>
+  <form th:action="@{/showbalance}" method="get">
+    <button class="button purple">
+      <div>Вывести баланс на экран</div>
+    </button>
+  </form>
+  <footer>
+    <a th:href="@{/main}" class="button purple">
+      <div>Вернуться в главное меню</div>
+    </a>
+  </footer>
 </body>
 
 </html>
