@@ -7,6 +7,7 @@ import bank.Application.dto.NewCustomerDto;
 import bank.Infrastructure.AccountDoesntExistExeption;
 import bank.Infrastructure.AccountExistsException;
 
+
 public interface CustomerDao {
     // UserDetails loadCustomerByEmail(String email);
     Optional<CustomerEntity> loadCustomerByEmail(String email) throws AccountDoesntExistExeption;

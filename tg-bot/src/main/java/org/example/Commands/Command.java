@@ -3,6 +3,7 @@ package org.example.Commands;
 
 import bank.Domain.Roles;
 
+
 public abstract class Command {
 
     public Command(String name, String description, String example, Roles[] roles) {
@@ -17,6 +18,6 @@ public abstract class Command {
     public String Example;
     public Roles[] RequiredRoles;
 
-    public abstract String execute(String[] args, Roles role);
+    public abstract String execute(String[] args, Roles role, long chatId);
 
 }

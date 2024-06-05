@@ -3,13 +3,13 @@ package org.example;
 import org.example.Commands.Command;
 import org.reflections.Reflections;
 import org.reflections.scanners.SubTypesScanner;
-import org.springframework.beans.factory.annotation.Configurable;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.stream.Collectors;
 
-@Service
+@Component
 public class CommandRegister {
 
     public CommandRegister(CommandHandler commandHandler) {
@@ -17,31 +17,22 @@ public class CommandRegister {
     }
 
     private final CommandHandler commandHandler;
+    @Autowired
+    private GenericApplicationContext applicationContext;
 
-    public void registerAllCommand()
-    {
+    public void registerAllCommand() {
         var commands = findCommands();
-        for (Command command : commands)
-        {
+        for (Command command : commands) {
             commandHandler.registerCommand(command);
         }
     }
 
-    private Iterable<Command> findCommands()
-    {
+    protected Iterable<Command> findCommands() {
         var ref = new Reflections("org.example.Commands", new SubTypesScanner(false));
         return ref.getSubTypesOf(Command.class)
                 .stream()
                 .filter(c -> Command.class.isAssignableFrom(c))
-                .map(c -> {
-                    try {
-                        return c.newInstance();
-                    } catch (InstantiationException e) {
-                        throw new RuntimeException(e);
-                    } catch (IllegalAccessException e) {
-                        throw new RuntimeException(e);
-                    }
-                })
+                .map(c -> applicationContext.getBean(c))
                 .collect(Collectors.toSet());
     }
 }

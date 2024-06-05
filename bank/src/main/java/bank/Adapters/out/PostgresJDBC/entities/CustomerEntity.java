@@ -4,16 +4,8 @@ import java.util.Set;
 
 import java.util.HashSet;
 import java.util.Arrays;
-import jakarta.persistence.CollectionTable;
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Table;
+
+import jakarta.persistence.*;
 import bank.Domain.Customer;
 import bank.Domain.Roles;
 
@@ -52,6 +44,7 @@ public class CustomerEntity {
         this.password = password;
         this.roles = roles;
     }
+
 
     public static CustomerEntity fromRecord(Customer customer) {
         return new CustomerEntity(customer.firstName(), customer.lastName(), customer.phone(), customer.email(),

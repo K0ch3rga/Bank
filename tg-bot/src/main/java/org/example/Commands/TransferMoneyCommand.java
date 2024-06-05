@@ -1,8 +1,17 @@
 package org.example.Commands;
 
+import bank.Application.usecases.TransferUsecase;
 import bank.Domain.Roles;
+import bank.Infrastructure.AccountDoesntExistExeption;
+import bank.Infrastructure.InsufficientFundsException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-public class TransferMoneyCommand extends Command{
+@Component
+public class TransferMoneyCommand extends Command {
+    @Autowired
+    private TransferUsecase transferUsecase;
+
     public TransferMoneyCommand() {
         super(
                 "/transfer_money",
@@ -12,7 +21,19 @@ public class TransferMoneyCommand extends Command{
     }
 
     @Override
-    public String execute(String[] args, Roles role) {
-        return "Перевод";
+    public String execute(String[] args, Roles role, long chatId) {
+        var currentAccountId = Long.parseLong(args[0]);
+        var targetAccountId = Long.parseLong(args[1]);
+        var count = Long.parseLong(args[2]);
+        if (currentAccountId == targetAccountId)
+            return "Ошибка: Номера счетов совпадают.";
+        try {
+            transferUsecase.transferMoney(currentAccountId, targetAccountId, count);
+        } catch (AccountDoesntExistExeption a) {
+            return "Счета не существует";
+        } catch (InsufficientFundsException m) {
+            return "Не хватает средств";
+        }
+        return "Перевод выполнен";
     }
 }

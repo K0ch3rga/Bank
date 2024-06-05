@@ -1,6 +1,7 @@
 package org.example;
 
 // import org.springframework.boot.SpringApplication;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,16 +13,14 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 public class Main {
 
     private static TeleBotInitializer teleBot;
+
     @Autowired
-    public Main(TeleBotInitializer teleBot)
-    {
+    public Main(TeleBotInitializer teleBot) {
         this.teleBot = teleBot;
     }
 
 
     public static void main(String[] args) {
-
-        String botToken = args[0];
         SpringApplication.run(Main.class, args);
         teleBot.init();
     }
