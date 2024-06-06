@@ -12,6 +12,7 @@ import bank.Application.dao.CustomerDao;
 import bank.Application.dto.NewCustomerDto;
 import bank.Domain.Roles;
 import bank.Infrastructure.AccountExistsException;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CustomerDaoAdapter implements CustomerDao {
@@ -24,6 +25,7 @@ public class CustomerDaoAdapter implements CustomerDao {
 
 
     @Override
+    @Transactional
     public synchronized Optional<CustomerEntity> loadCustomerByEmail(String email) {
             return customerRepository.findByEmail(email);
             
@@ -32,12 +34,12 @@ public class CustomerDaoAdapter implements CustomerDao {
     }
 
     @Override
+    @Transactional
     public synchronized void saveCustomer(NewCustomerDto newCustomer) throws AccountExistsException {
         Optional<CustomerEntity> customerFromDb = customerRepository.findByEmail(newCustomer.email());
         if (customerFromDb.isPresent()) {
             throw new AccountExistsException(customerFromDb.get().toRecord());
         }
-        Random rnd = new Random();
         CustomerEntity customerEntity = new CustomerEntity(newCustomer.firstName(), newCustomer.lastName(),
                 newCustomer.phone(), newCustomer.email(), newCustomer.password(), Roles.CUSTOMER);
         System.out.println("Saved " + newCustomer.password());

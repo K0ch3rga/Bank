@@ -11,6 +11,7 @@ import bank.Adapters.out.PostgresJDBC.repositories.AccountRepository;
 import bank.Application.dao.AccountDao;
 import bank.Application.dto.NewAccountDto;
 import bank.Domain.BankAccount;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class AccountDaoAdapter implements AccountDao {
@@ -18,6 +19,7 @@ public class AccountDaoAdapter implements AccountDao {
     private AccountRepository accountRepository;
 
     @Override
+    @Transactional
     public synchronized BankAccount createAccount(NewAccountDto account) {
         var acc = accountRepository.save(new AccountEntity(null, 0l,
                 account.accountHolder(), account.bankId(), account.currency()));
@@ -26,6 +28,7 @@ public class AccountDaoAdapter implements AccountDao {
     }
 
     @Override
+    @Transactional
     public synchronized List<BankAccount> getAllAccountsByCustomerId(long id) {
         var accounts = accountRepository.findAllByAccountHolder(id).stream()
                 .map((acc) -> new BankAccount(acc.getId(), acc.getBalance(), acc.getAccountHolder(),
@@ -35,6 +38,7 @@ public class AccountDaoAdapter implements AccountDao {
     }
 
     @Override
+    @Transactional
     public synchronized void updateAccount(BankAccount account) {
         Optional<AccountEntity> oldAccountEntity = accountRepository.findById(account.id());
         if (oldAccountEntity.isPresent()) {
@@ -52,6 +56,7 @@ public class AccountDaoAdapter implements AccountDao {
     }
 
     @Override
+    @Transactional
     public synchronized Optional<BankAccount> getAccoinyById(long id) {
         var acc = accountRepository.findById(id);
         if (acc.isPresent()) {
@@ -63,6 +68,7 @@ public class AccountDaoAdapter implements AccountDao {
     }
 
     @Override
+    @Transactional
     public synchronized List<BankAccount> getAll() {
         var list = new ArrayList<BankAccount>();
         accountRepository.findAll()

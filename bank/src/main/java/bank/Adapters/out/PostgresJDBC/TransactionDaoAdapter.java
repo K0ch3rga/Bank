@@ -10,6 +10,7 @@ import bank.Adapters.out.PostgresJDBC.repositories.TransactionRepository;
 import bank.Application.dao.TransactionDao;
 import bank.Domain.NewTransactionDto;
 import bank.Domain.Transaction;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class TransactionDaoAdapter implements TransactionDao {
@@ -17,6 +18,7 @@ public class TransactionDaoAdapter implements TransactionDao {
     TransactionRepository transactionRepository;
 
     @Override
+    @Transactional
     public synchronized void createTransaction(NewTransactionDto transaction) {
         transactionRepository.save(new TransactionEntity(0, transaction.amount(), transaction.currency(),
                 transaction.time(), transaction.transactionType(), transaction.bankAccountId(),
@@ -24,6 +26,7 @@ public class TransactionDaoAdapter implements TransactionDao {
     }
 
     @Override
+    @Transactional
     public synchronized List<Transaction> getAllbyAccountId(long id) {
         return transactionRepository.findByBankAccountIdOrRecipientBankAccountId(id, id).stream()
                 .map((t) -> new Transaction(t.getId(), t.getAmount(), t.getCurrency(), t.getTime(), t.getTransactionType(), t.getBankAccountId(),
