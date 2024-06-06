@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+  <title> Главная страница </title>
+  <link th:href="@{/styles/main.css}" rel="stylesheet" />
+</head>
+
+<body th:style="'background-image: url(/img/bg.png)'">
+  <p>Здравствуйте, <span th:value="${user.firstName}" th:text="${user.firstName}"></span>! Вы успешно вошли в свой
+    банковский аккаунт.<br> Выберите нужное действие:</p>
+  <div class="buttons">
+    <a class="button purple" th:href="@{mybills}">
+      <div>Мои счета</div>
+    </a>
+    <a class="button purple" th:href="@{newbill}">
+      <div>Открыть новый счет</div>
+    </a>
+    <a class="button purple" th:href="@{newtransfer}">
+      <div>Перевести деньги</div>
+    </a>
+    <a class="button purple" th:href="@{withdraft}">
+      <div>Снять деньги</div>
+    </a>
+    <a class="button purple" th:href="@{newdeposit}">
+      <div>Пополнить баланс</div>
+    </a>
+    <a class="button purple" th:href="@{logout}">
+      <div>Выйти</div>
+    </a>
+  </div>
+</body>
+
+</html>

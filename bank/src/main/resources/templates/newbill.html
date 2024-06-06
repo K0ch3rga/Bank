@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+  <title> Открыть новый счет </title>
+  <link th:href="@{/styles/main.css}" rel="stylesheet" />
+</head>
+
+<body th:style="'background-image: url(/img/bg.png)'">
+  <form th:action="@{/newbill}" th:object="${newAccountCurrencyType}" method="post" class="form">
+    <p>Выберите валюту счета:</p>
+    <select name="currency" size="3">
+      <option th:each="currency : ${T(bank.Domain.CurrencyType).values()}" th:value="${currency}" th:text="${currency}">
+      </option>
+    </select>
+    <button class="button purple inp">
+      <div>Открыть новый счет!</div>
+    </button>
+  </form>
+  <footer>
+    <a th:href="@{/main}" class="button purple">
+      <div>Вернуться в главное меню</div>
+    </a>
+  </footer>
+</body>
+
+</html>

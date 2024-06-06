@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">\
+
+<head>
+  <title>Spring Security Example </title>
+</head>
+
+<body>
+  <div th:if="${message}">
+    <div th:text="${message}"></div>
+  </div>
+  <form th:action="@{/registration}" th:object="${newCustomer}" method="post">
+    <div><label> FirstName : <input type="text" name="firstName" required /> </label></div>
+    <div><label> LastName : <input type="text" name="lastName" required /> </label></div>
+    <div><label> Phone : <input type="tel" name="phone" required /> </label></div>
+    <div><label> Email : <input type="email" name="email" required /> </label></div>
+    <div><label> Password: <input type="password" name="password" required /> </label></div>
+    <div><input type="submit" value="Зарегистрироваться" /></div>
+  </form>
+</body>
+
+</html>

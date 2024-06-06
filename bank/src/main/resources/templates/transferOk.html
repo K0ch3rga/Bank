@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+  <title> Перевод выполнен </title>
+  <link th:href="@{/styles/main.css}" rel="stylesheet" />
+</head>
+
+<body th:style="'background-image: url(/img/bg.png)'">
+<p>Перевод выполнен!</p>
+<form th:action="@{/main}" method="get">
+  <button class="button purple"><div>Вернуться в главное меню</div></button>
+</form>
+</body>
+
+</html>

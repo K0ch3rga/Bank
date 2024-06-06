@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+  <title> Ошибка! </title>
+  <link th:href="@{/styles/main.css}" rel="stylesheet" />
+</head>
+
+<body th:style="'background-image: url(/img/bg.png)'">
+  <p>Чековая лента закончилась, приносим свои извинения!</p>
+  <form th:action="@{/showbalance}" method="get">
+    <button class="button purple">
+      <div>Вывести баланс на экран</div>
+    </button>
+  </form>
+  <footer>
+    <a th:href="@{/main}" class="button purple">
+      <div>Вернуться в главное меню</div>
+    </a>
+  </footer>
+</body>
+
+</html>

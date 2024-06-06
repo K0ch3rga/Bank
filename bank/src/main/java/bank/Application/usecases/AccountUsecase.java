@@ -1,6 +1,7 @@
 package bank.Application.usecases;
 
 import java.util.Optional;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,12 +14,14 @@ import bank.Infrastructure.AccountDoesntExistExeption;
 /**
  * Класс для взаимодействия с аккаунтом
  * (Создание, получение и обновление)
+ * 
  * @see TransferUsecase
  */
 @Service
 public class AccountUsecase {
-    
+
     private final AccountDao accountDao;
+
     @Autowired
     public AccountUsecase(AccountDao accountDao) {
         this.accountDao = accountDao;
@@ -26,30 +29,37 @@ public class AccountUsecase {
 
     /**
      * Создаёт новый акаунт
+     * 
      * @param account
      */
-    public void createNewAccount(NewAccountDto account) {
-        accountDao.createAccount(account);
+    public BankAccount createNewAccount(NewAccountDto account) {
+        return accountDao.createAccount(account);
     }
 
     /**
      * Возвращает аккаунт полученный по id
+     * 
      * @param id
      * @return
      * @throws AccountDoesntExistExeption
      */
-    public Optional<BankAccount> getAccountById(long id) throws AccountDoesntExistExeption {
-        // TODO choose optional or exeption
+    public Optional<BankAccount> getAccountById(long id) {
         return accountDao.getAccoinyById(id);
     }
 
     /**
      * Обновляет аккаунт по id с предоставленными данными
      * Не должне менять баланс
+     * 
      * @param account
      */
     public void updateAccount(BankAccount account) {
-        //TODO add checks on balance
+        // TODO add checks on balance
         accountDao.updateAccount(account);
+    }
+
+    // FIXME
+    public List<BankAccount> getAllByCustomerId(long id) {
+        return accountDao.getAllAccountsByCustomerId(id);
     }
 }

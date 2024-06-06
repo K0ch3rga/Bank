@@ -3,9 +3,8 @@ package bank.Application.dto;
 import bank.Domain.CurrencyType;
 
 public record NewAccountDto(
-        int balance,
-        int accountHolder,
-        int bankId,
+        long accountHolder,
+        long bankId,
         CurrencyType currency
 ) {
 }

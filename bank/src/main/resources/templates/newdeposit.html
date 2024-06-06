@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+  <title> Пополнение баланса </title>
+  <link th:href="@{/styles/main.css}" rel="stylesheet" />
+</head>
+
+<body th:style="'background-image: url(/img/bg.png)'">
+  <form class="form" th:action="@{/newdeposit}" th:object="${transactionDto}" method="post">
+    <p>Выберите счет пополнения:</p>
+    <select name="bankAccountId">
+      <option th:each="account : ${accounts}" th:value="${account.id()}">
+        <span th:text="${account.id()}" />
+        <span th:text="${account.balance()}" />
+        <span th:text="${account.currency()}" />
+      </option>
+    </select>
+    <p>Внесите купюры в купюроприемник:</p>
+    <label for="amount"></label>
+    <label><input type="text" name="amount" /></label>
+    <div><input class="button purple inp" type="submit" value="Пополнить" /></div>
+  </form>
+  <footer>
+    <a th:href="@{/main}" class="button purple">
+      <div>Вернуться в главное меню</div>
+    </a>
+  </footer>
+</body>
+
+</html>

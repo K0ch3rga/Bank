@@ -8,4 +8,5 @@
  */
 
 rootProject.name = "Bank"
-include("bank")
+include(":bank")
+include(":tg-bot")

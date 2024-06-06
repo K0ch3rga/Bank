@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+  <title> Снятие денег </title>
+  <link th:href="@{/styles/main.css}" rel="stylesheet" />
+</head>
+
+<body th:style="'background-image: url(/img/bg.png)'">
+  <p>Введите сумму для снятия:</p>
+  <form class="form" th:action="@{/withdraft}" th:value="${withdrawalDto}" method="post">
+    <select name="bankAccountId">
+      <option th:each="account : ${accounts}" th:value="${account.id()}">
+        <span th:text="${account.id()}" />
+        <span th:text="${account.balance()}" />
+        <span th:text="${account.currency()}" />
+      </option>
+    </select>
+    <label for="amount"> </label>
+    <input type="number" name="amount" />
+    <div class="withd"><input class="button purple inp" type="submit" value="Cнять" /></div>
+  </form>
+</body>
+
+</html>

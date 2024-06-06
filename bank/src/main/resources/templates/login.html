@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+  <title> Вход </title>
+  <link th:href="@{/styles/main.css}" rel="stylesheet" />
+</head>
+
+<body th:style="'background-image: url(/img/bg.png)'">
+  <p>Пожалуйста, авторизуйтесь:</p>
+  <form class="form" th:action="@{/login}" method="post">
+    <label for="email">Email</label>
+    <input name="email" type="email" required>
+    <label for="password">Пароль</label>
+    <input name="password" type="password" required>
+    <button class="button purple input" type="submit" value="Войти">Войти</button>
+    <a th:href="@{/registration}" class="button purple input">Зарегистрироваться</a>
+  </form>
+</body>
+
+</html>

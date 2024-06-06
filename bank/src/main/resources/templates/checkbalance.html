@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+  <title> Проверка баланса </title>
+  <link th:href="@{/styles/main.css}" rel="stylesheet" />
+</head>
+
+<body th:style="'background-image: url(/img/bg.png)'">
+  <p>В какой форме вы хотите увидеть свой баланc?</p>
+  <a th:action="@{/showbalance}" method="get" class="button purple">Показать баланс на экране</a>
+  <a th:action="@{/printbalance}" method="get" class="button purple">Распечатать на чеке</a>
+  <footer>
+    <a th:href="@{/main}" class="button purple">
+      <div>Вернуться в главное меню</div>
+    </a>
+  </footer>
+</body>
+
+</html>

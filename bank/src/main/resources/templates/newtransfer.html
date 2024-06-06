@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+  <title> Новый перевод</title>
+  <link th:href="@{/styles/main.css}" rel="stylesheet" />
+</head>
+
+<body th:style="'background-image: url(/img/bg.png)'">
+  <form class="form" th:action="@{/newtransfer}" th:object="${transferDto}" method="post">
+    <p>Выберите счет:</p>
+    <select name="bankAccountId">
+      <option th:each="account : ${accounts}" th:value="${account.id()}">
+        <span th:text="${account.id()}" />
+        <span th:text="${account.balance()}" />
+        <span th:text="${account.currency()}" />
+      </option>
+    </select>
+    <p>Введите реквизиты:</p>
+    <label for="RecipientBankAccountId">Реквизиты:</label>
+    <input type="text" name="RecipientBankAccountId" />
+    <label for="amount">Сумма:</label>
+    <input type="text" name="amount" />
+    <div><input class="button purple inp" type="submit" value="Отправить" /></div>
+  </form>
+  <footer>
+    <a th:href="@{/main}" class="button purple">
+      <div>Вернуться в главное меню</div>
+    </a>
+  </footer>
+</body>
+
+</html>
